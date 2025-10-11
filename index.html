@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formsy - Business Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-primary': '#3B82F6',   // blue-500
+            'brand-secondary': '#2DD4BF', // teal-400
+            'brand-dark': '#111827',     // gray-900
+            'brand-medium': '#6B7280',   // gray-500
+            'brand-light': '#F9FAFB',    // gray-50
+            'brand-white': '#FFFFFF',
+            'brand-accent': '#F97316',   // orange-500 for services menu
+          },
+          fontFamily: {
+            sans: ['Arial', 'sans-serif'],
+          },
+          animation: {
+            'gradient-text': 'gradient-text 5s ease infinite',
+            'pulse-slow': 'pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'scroll-left': 'scroll-left 40s linear infinite',
+          },
+          keyframes: {
+            'gradient-text': {
+              '0%, 100%': {
+                'background-size':'200% 200%',
+                'background-position': 'left center'
+              },
+              '50%': {
+                'background-size':'200% 200%',
+                'background-position': 'right center'
+              }
+            },
+            'pulse-slow': {
+              '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+              '50%': { opacity: 0.9, transform: 'scale(1.02)' },
+            },
+            'scroll-left': {
+              'from': { transform: 'translateX(0)' },
+              'to': { transform: 'translateX(-50%)' },
+            },
+          },
+        }
+      }
+    }
+    </script>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #000000; /* Fallback */
+        /* Layered background to create glowing transitions */
+        background-image:
+            /* Layer 1: The repeating light blue glow for transitions between sections. */
+            repeating-linear-gradient(
+                to bottom,
+                transparent,
+                transparent 600px, /* Space with dark bg */
+                hsla(212, 90%, 75%, 0.1) 800px, /* Start glow */
+                hsla(212, 90%, 75%, 0.1) 1200px, /* End glow */
+                transparent 1400px,
+                transparent 1800px /* Total repeat size */
+            ),
+            /* Layer 2: The original rich dark blue base gradient */
+            radial-gradient(ellipse at center, #38bdf8 -20%, #1E3A8A 45%, #080F21 75%, #000000 100%);
+        color: #F9FAFB; /* gray-50 */
+        min-height: 100vh;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+      /* Styles for the new Cloud Animation */
+      .advantage-content {
+        opacity: 0;
+        transform: translateY(15px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+      .advantage-content.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+       #cloud-layer-1, #cloud-layer-2, #cloud-layer-3 {
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      #play-button-container {
+        transition: opacity 0.3s ease-in-out;
+      }
+       .subtle-bg {
+        background-color: #ffffff;
+      }
+      select.appearance-none + svg {
+        pointer-events: none;
+      }
+      select option {
+          background: #FFFFFF;
+          color: #111827;
+      }
+       .dotted-bg-dark {
+          background-image:  radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+          background-size: 24px 24px;
+       }
+       .plexus-bg {
+        background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNDAwIDMwMCI+PGcgc3Ryb2tlPSJyZ2JhKDU2LCAxODksIDI0OCwgMC4yKSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJyZ2JhKDU2LCAxODksIDI0OCwgMC40KSI+PGNpcmNsZSBjeD0iMjAwIiBjeT0iMTAwIiByPSIzIi8+PGNpcmNsZSBjeD0iMzAwIiBjeT0iMjAwIiByPSI0Ii8+PGNpcmNsZSBjeD0iMjUwIiBjeT0iMjUwIiByPSIzIi8+PGNpcmNsZSBjeD0iMTUwIiBjeT0iMjAwIiByPSIyIi8+PGNpcmNsZSBjeD0iMzUwIiBjeT0iMTAwIiByPSIyIi8+PGNpcmNsZSBjeD0iMzIwIiBjeT0iNTAiIHI9IjMiLz48bGluZSB4MT0iMjAwIiB5MT0iMTAwIiB4Mj0iMzAwIiB5Mj0iMjAwIi8+PGxpbmUgeDE9IjMwMCIgeTE9IjIwMCIgeDI9IjI1MCIgeTI9IjI1MCIvPjxsaW5lIHgxPSIyNTAiIHkxPSIyNTAiIHgyPSIxNTAiIHkyPSIyMDAiLz48bGluZSB4MT0iMTUwIiB5MT0iMjAwIiB4Mj0iMjAwIiB5Mj0iMTAwIi8+PGxpbmUgeDE9IjIwMCIgeTE9IjEwMCIgeDI9IjI1MCIgeTI9IjI1MCIvPjxsaW5lIHgxPSIzMDAiIHkxPSIyMDAiIHgyPSIxNTAiIHkyPSIyMDAiLz48bGluZSB4MT0iMzUwIiB5MT0iMTAwIiB4Mj0iMzAwIiB5Mj0iMjAwIi8+PGxpbmUgeDE9IjM1MCIgeTE9IjEwMCIgeDI9IjMyMCIgeTI9IjUwIi8+PGxpbmUgeDE9IjMyMCIgeTE9IjUwIiB4Mj0iMjAwIiB5Mj0iMTAwIi8+PC9nPjwvc3ZnPg==");
+        background-repeat: no-repeat;
+        background-position: bottom -2rem right -2rem;
+        background-size: 60% auto;
+      }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^0.14.0",
+    "path": "https://aistudiocdn.com/path@^0.12.7",
+    "vite": "https://aistudiocdn.com/vite@^7.1.6",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="font-sans">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 p-4">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="header-inner" class="flex items-center justify-between h-16 rounded-full border border-white/10 px-6 bg-black/50 backdrop-blur-lg shadow-xl">
+                <div class="flex-shrink-0">
+                     <a href="/index.html" class="flex items-center space-x-2 text-2xl font-bold text-white">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7">
+                            
+                            
+                        </svg>
+                        
+                        <span> <img class="h-24 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/557657344_1495142828294166_4549417873496881086_n-removebg-preview.png" Formsy </span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex md:space-x-8">
+                    <a href="/about.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">About us</a>
+                    <div class="relative group" id="services-menu-container">
+                        <a href="/services.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium flex items-center">
+                            Services
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div class="absolute top-full -left-40 w-[1000px] bg-slate-900 shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto border border-slate-700 transform translate-y-4 group-hover:translate-y-0 z-50">
+                            <div class="p-8">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6">
+                                    <!-- Column 1: Startup & Taxation -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">1. Startup</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="private.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Private Limited Company Registration</a></li>
+                                            <li><a href="LLP.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">LLP Registration</a></li>
+                                            <li><a href="OPC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">OPC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">NGO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Indian Subsidiary Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Foreign Subsidiary Registration in India</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Registration</a></li>
+                                            <li><a href="Sole.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Sole Proprietorship Registration</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">4. Taxation</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Income Tax Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">80-IAC Tax Exemption for Startups</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Tax Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">GST Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">GST Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Cancel GST Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Additional Place of Business in GST</a></li>
+                                        </ul>
+                                    </div>
+                        
+                                    <!-- Column 2: Registrations & IPR -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">2. Registrations</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Startup India Registration</a></li>
+                                            <li><a href="IEC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Import Export Code Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">MSME Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Shop & Establishment Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">BIS Certification</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Darpan Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">12A and 80G Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">RCMC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">PTEC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ICEGATE Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">EPR Registration</a></li>
+                                            <li><a href="DSC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Digital Signature Certificate</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">5. IPR</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trademark Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Copyright Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trademark Opposition</a></li>
+                                        </ul>
+                                    </div>
+                        
+                                    <!-- Column 3: Compliances & Licenses -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">3. Compliances</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Virtual Office</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">EPFO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ESIC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">LLP Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Company Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change Private Limited Company Name</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change in Object Clause</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change in Designated Partner</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">6. Licenses</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">FSSAI Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ISO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trade License</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Gumasta License</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">RERA Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Hallmark Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">APEDA Registration</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                         <a href="#" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium flex items-center">
+                            Resources
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div class="absolute top-full left-0 mt-4 w-48 bg-slate-900 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto border border-slate-700">
+                            <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800">Tools & Calculators</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800">Regulatory</a>
+                            
+                        </div>
+                    </div>
+                    <a href="#" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Blogs & Guides</a>
+                    <a href="partner.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Partner with us</a>
+                    <a href="contact.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Contact us</a>
+                </nav>
+                <div class="hidden md:flex items-center space-x-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-400 hover:text-white cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                     <a href="#" class="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                        <span>Talk to Experts</span>
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" aria-label="Open menu">
+                        <svg class="h-6 w-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+     <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-[60] bg-slate-900 p-6">
+        <div class="flex justify-between items-center mb-8">
+            <a href="/index.html" class="flex items-center space-x-2 text-2xl font-bold text-white">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7"><rect x="3" y="3" width="18" height="18" rx="4" fill="white"></rect><path d="M8 12.5L11 15.5L16.5 9" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <span>Formsy</span>
+            </a>
+            <button id="mobile-menu-close-button" aria-label="Close menu">
+                <svg class="h-8 w-8 text-slate-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-4 text-lg text-center">
+            <a href="/about.html" class="text-slate-300 hover:text-white py-2">About us</a>
+            <a href="/services.html" class="text-slate-300 hover:text-white py-2">Services</a>
+            <a href="#" class="coming-soon-link text-slate-300 hover:text-white py-2">Resources</a>
+            <a href="#" class="coming-soon-link text-slate-300 hover:text-white py-2">Blogs & Guides</a>
+            <a href="partner.html" class="text-slate-300 hover:text-white py-2">Partner with us</a>
+            <a href="contact.html" class="text-slate-300 hover:text-white py-2">Contact us</a>
+        </nav>
+    </div>
+
+    <main>
+        <section class="relative overflow-hidden pt-28">
+            <div class="absolute inset-0 bg-grid-gray-500/[0.04] bg-[bottom_1px_center]" style="mask-image: linear-gradient(to bottom, transparent, white, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, white, transparent);"></div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 relative z-10">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight tracking-tighter">
+                        Seamless <span class="bg-gradient-to-r from-blue-500 to-teal-400 text-transparent bg-clip-text">Registrations</span>
+                        <br />
+                        Effortless <span class="bg-gradient-to-r from-blue-500 to-teal-400 text-transparent bg-clip-text">Compliance</span>
+                        <br />
+                        Limitless <span class="bg-gradient-to-r from-blue-500 to-teal-400 text-transparent bg-clip-text">Growth</span>
+                    </h1>
+                    <p class="mt-6 text-lg md:text-xl text-slate-300 max-w-3xl mx-auto">
+                        Building a secure foundation for your business with expert-led legal, financial, and corporate compliance solutions for global operations.
+                    </p>
+                    <div class="mt-12 max-w-4xl mx-auto">
+                        <div class="bg-white rounded-2xl p-4 shadow-2xl" style="box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.2), 0 0 20px 0px rgba(59, 130, 246, 0.15) inset;">
+                            <form action="#" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+                                <div>
+                                    <label for="hero-name" class="sr-only">Your Name</label>
+                                    <input type="text" name="hero-name" id="hero-name" placeholder="Enter Your Name" class="block w-full rounded-md border-gray-200 shadow-sm focus:border-brand-primary focus:ring-brand-primary sm:text-sm text-brand-dark placeholder-gray-500 bg-gray-100 py-3 px-4 transition-colors focus:bg-white">
+                                </div>
+                                <div>
+                                    <label for="hero-phone" class="sr-only">Phone Number</label>
+                                    <input type="tel" name="hero-phone" id="hero-phone" placeholder="Enter your PhoneNo." class="block w-full rounded-md border-gray-200 shadow-sm focus:border-brand-primary focus:ring-brand-primary sm:text-sm text-brand-dark placeholder-gray-500 bg-gray-100 py-3 px-4 transition-colors focus:bg-white">
+                                </div>
+                                <div>
+                                    <label for="hero-email" class="sr-only">Email</label>
+                                    <input type="email" name="hero-email" id="hero-email" placeholder="Enter your Email" class="block w-full rounded-md border-gray-200 shadow-sm focus:border-brand-primary focus:ring-brand-primary sm:text-sm text-brand-dark placeholder-gray-500 bg-gray-100 py-3 px-4 transition-colors focus:bg-white">
+                                </div>
+                                <div class="md:col-span-2 relative">
+                                    <label for="hero-service" class="sr-only">Select your service</label>
+                                    <select id="hero-service" name="hero-service" class="appearance-none block w-full h-full rounded-md border-gray-200 shadow-sm focus:border-brand-primary focus:ring-brand-primary sm:text-sm text-gray-500 bg-gray-100 py-3 px-4 transition-colors focus:bg-white">
+                                        <option>Select your service</option>
+                                        <option>Company Registration</option>
+                                        <option>IPR</option>
+                                        <option>Taxation & Compliance</option>
+                                        <option>Consultation</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="submit" class="w-full h-full bg-gradient-to-r from-orange-500 to-amber-500 text-white px-3 py-3 rounded-md text-xs font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105 flex items-center justify-center uppercase tracking-wider text-center leading-tight">
+                                        Claim Your Free<br>Consultation
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="formsy-advantage" class="py-12 sm:py-8 px-4 sm:px-6 lg:px-8">
+          <div class="subtle-bg rounded-2xl p-8 md:p-12 lg:p-16 shadow-2xl shadow-blue-500/10 border border-slate-200">
+            <div class="container mx-auto">
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Column: Animated Text Content -->
+                <div class="relative min-h-[300px] flex flex-col justify-center text-center lg:text-left">
+                  <h2 class="text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">The Formsy Advantage</h2>
+                  <p class="mt-4 max-w-2xl text-lg text-brand-medium mx-auto lg:mx-0">Hover over this section to see how we simplify your journey.</p>
+                  <div id="advantage-text-container" class="advantage-content mt-8">
+                     <h3 class="text-2xl font-bold text-brand-primary mb-2"></h3>
+                     <div class="mt-4 text-lg text-brand-medium leading-relaxed space-y-3">
+                         <p class="advantage-desc-1"></p>
+                         <p class="advantage-desc-2"></p>
+                     </div>
+                  </div>
+                </div>
+        
+                <!-- Right Column: Animated Graphic -->
+                <div id="cloud-animation-container" class="relative flex justify-center items-center h-full min-h-[300px] order-first lg:order-last">
+                  <svg class="w-64 h-64 lg:w-80 lg:h-80" viewBox="0 0 250 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <filter id="cloud-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feDropShadow dx="5" dy="10" stdDeviation="10" flood-color="#000000" flood-opacity="0.2" />
+                      </filter>
+                    </defs>
+                    <g filter="url(#cloud-shadow)">
+                      <path id="cloud-layer-3" d="M185.7,113.1c-2.3-20.9-19.4-37.1-40.7-37.1c-5.8,0-11.4,1.2-16.5,3.5c-6.8-19.1-25.5-32.6-47.5-32.6 c-27.2,0-49.3,21.6-49.9,48.5c-15.8,4.3-27.1,18.7-27.1,35.5c0,20.4,16.8,36.9,37.5,36.9h120c23.2,0,42-18.4,42-41.2 C203.5,132.8,196.3,120.3,185.7,113.1z" fill="#D6E3FF" style="transform-origin: center center;"/>
+                      <path id="cloud-layer-2" d="M185.7,103.1c-2.3-20.9-19.4-37.1-40.7-37.1c-5.8,0-11.4,1.2-16.5,3.5c-6.8-19.1-25.5-32.6-47.5-32.6 c-27.2,0-49.3,21.6-49.9,48.5c-15.8,4.3-27.1,18.7-27.1,35.5c0,20.4,16.8,36.9,37.5,36.9h120c23.2,0,42-18.4,42-41.2 C203.5,122.8,196.3,110.3,185.7,103.1z" fill="#A8C5FF" style="transform-origin: center center;"/>
+                      <path id="cloud-layer-1" d="M185.7,93.1c-2.3-20.9-19.4-37.1-40.7-37.1c-5.8,0-11.4,1.2-16.5,3.5C121.7,40.4,103,26.9,81,26.9 c-27.2,0-49.3,21.6-49.9,48.5c-15.8,4.3-27.1,18.7-27.1,35.5c0,20.4,16.8,36.9,37.5,36.9h120c23.2,0,42-18.4,42-41.2 C203.5,112.8,196.3,100.3,185.7,93.1z" fill="#8EADFF" style="transform-origin: center center;"/>
+                    </g>
+                  </svg>
+                  <div id="play-button-container" class="absolute inset-0 flex justify-center items-center bg-black/10 rounded-full">
+                    <div class="h-20 w-20 bg-white/80 rounded-full flex items-center justify-center shadow-lg backdrop-blur-sm">
+                       <svg class="h-10 w-10 text-brand-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Simplified Path Section -->
+        <section id="simplified-path-section" class="py-12 sm:py-8 px-4 sm:px-6 lg:px-8">
+            <div class="bg-[#0B142B] border border-white/20 rounded-2xl p-8 md:p-12 relative overflow-hidden plexus-bg shadow-2xl shadow-blue-500/10">
+                
+                <div class="absolute -top-1/4 -right-1/4 w-1/2 h-full bg-blue-600/10 rounded-full blur-3xl opacity-50" aria-hidden="true"></div>
+                <div class="absolute -bottom-1/4 -left-1/4 w-1/2 h-full bg-teal-500/10 rounded-full blur-3xl opacity-50" aria-hidden="true"></div>
+                <div class="absolute top-20 right-24 w-0 h-0 border-l-[15px] border-l-transparent border-b-[25px] border-b-sky-500/50 border-r-[15px] border-r-transparent transform -rotate-45 opacity-50 hidden md:block" aria-hidden="true"></div>
+
+
+                <div class="text-center max-w-4xl mx-auto relative z-10">
+                    <h2 class="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                        The Simplified Path to Launch
+                    </h2>
+                    <p class="mt-4 text-xl md:text-2xl text-slate-300 font-light tracking-wide">
+                        Turn Your Idea into a Growing Business
+                    </p>
+                    <p class="mt-6 text-slate-400 max-w-3xl mx-auto">
+                        Your journey from a groundbreaking idea to a compliant, growing enterprise doesn't have to be complicated. Formsby simplifies the entire process into three clear, actionable steps, so you can focus on building your business.
+                    </p>
+                </div>
+                
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10 max-w-6xl mx-auto">
+                    <!-- Step 1 Card -->
+                    <div class="bg-gradient-to-b from-sky-900/40 to-sky-950/60 backdrop-blur-sm border-2 border-sky-600/50 rounded-xl p-8 text-center transition-all duration-300 hover:border-sky-400 hover:shadow-[0_0_25px_rgba(56,189,248,0.3)] hover:-translate-y-2">
+                        <div class="mx-auto mb-6 h-16 w-16 rounded-full bg-slate-900 flex items-center justify-center border-2 border-sky-500 text-sky-300 text-3xl font-bold shadow-[0_0_20px_theme(colors.sky.500)]">
+                            1
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Share Your Idea</h3>
+                        <p class="mt-2 text-slate-400">to Get a Consultation</p>
+                    </div>
+                    <!-- Step 2 Card -->
+                    <div class="bg-gradient-to-b from-sky-900/40 to-sky-950/60 backdrop-blur-sm border-2 border-sky-600/50 rounded-xl p-8 text-center transition-all duration-300 hover:border-sky-400 hover:shadow-[0_0_25px_rgba(56,189,248,0.3)] hover:-translate-y-2">
+                       <div class="mx-auto mb-6 h-16 w-16 rounded-full bg-slate-900 flex items-center justify-center border-2 border-sky-500 text-sky-300 text-3xl font-bold shadow-[0_0_20px_theme(colors.sky.500)]">
+                            2
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Get Registered</h3>
+                        <p class="mt-2 text-slate-400">to Obtain a Legal Identity</p>
+                    </div>
+                    <!-- Step 3 Card -->
+                    <div class="bg-gradient-to-b from-sky-900/40 to-sky-950/60 backdrop-blur-sm border-2 border-sky-600/50 rounded-xl p-8 text-center transition-all duration-300 hover:border-sky-400 hover:shadow-[0_0_25px_rgba(56,189,248,0.3)] hover:-translate-y-2">
+                        <div class="mx-auto mb-6 h-16 w-16 rounded-full bg-slate-900 flex items-center justify-center border-2 border-sky-500 text-sky-300 text-3xl font-bold shadow-[0_0_20px_theme(colors.sky.500)]">
+                            3
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Stay Compliant</h3>
+                        <p class="mt-2 text-slate-400">and Focus on Growth</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 sm:py-8 px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl p-8 md:p-12 lg:p-16 shadow-2xl shadow-blue-500/10 border border-slate-200">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">Our Specialized Services</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-brand-medium">
+                        Explore our range of expert services designed to help your business thrive. Drag and drop an image to customize.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-8">
+                    <!-- Card 1: Capital growth and advisory -->
+                    <div id="service-card-capital" data-storage-key="savedImage-capital" class="service-drop-zone group relative h-80 w-full rounded-lg shadow-xl overflow-hidden cursor-pointer" tabindex="0">
+                        <img id="service-img-capital" src="https://ik.imagekit.io/3o5ofvzg8/capital%20growth%20and%20advisory.%20(1).png" alt="Stock market graph with upward trend representing capital growth and advisory" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-lg"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white w-full">
+                            <h3 class="text-2xl font-bold">Capital growth and advisory</h3>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-sm p-6 text-center text-white flex flex-col justify-center items-center transform translate-y-full group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 ease-in-out">
+                            <h3 class="text-2xl font-bold">Capital growth and advisory</h3>
+                            <p class="mt-2 text-sm text-slate-300">Strategic advice and support for expanding your business and securing capital for growth.</p>
+                            <a href="#" class="mt-4 self-center inline-block rounded-md bg-white px-5 py-2 text-sm font-semibold text-black hover:bg-slate-100 transition-all shadow-md hover:shadow-lg">Read More</a>
+                        </div>
+                        <div class="drop-overlay hidden absolute inset-0 bg-black/70 border-4 border-dashed border-blue-500 rounded-lg items-center justify-center text-white font-bold text-xl pointer-events-none">Drop to replace image</div>
+                    </div>
+
+                    <!-- Card 2: Business entity and expansion (Tall middle card) -->
+                    <div id="service-card-business" data-storage-key="savedImage-business" class="service-drop-zone group relative w-full rounded-lg shadow-xl overflow-hidden cursor-pointer lg:row-span-2 h-full min-h-[30rem]" tabindex="0">
+                        <img id="service-img-business" src="https://ik.imagekit.io/3o5ofvzg8/Business%20Entry%20&%20Expansion%20(2).png" alt="A busy office with people working, representing business entity and expansion" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-lg"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white w-full">
+                            <h3 class="text-2xl font-bold">Business entity and expansion</h3>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-sm p-6 text-center text-white flex flex-col justify-center items-center transform translate-y-full group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 ease-in-out">
+                            <h3 class="text-2xl font-bold">Business entity and expansion</h3>
+                            <p class="mt-2 text-sm text-slate-300">Comprehensive support for establishing and expanding your business entity, ensuring a solid foundation for growth.</p>
+                            <a href="#" class="mt-4 self-center inline-block rounded-md bg-white px-5 py-2 text-sm font-semibold text-black hover:bg-slate-100 transition-all shadow-md hover:shadow-lg">Read More</a>
+                        </div>
+                         <div class="drop-overlay hidden absolute inset-0 bg-black/70 border-4 border-dashed border-blue-500 rounded-lg items-center justify-center text-white font-bold text-xl pointer-events-none">Drop to replace image</div>
+                    </div>
+
+                    <!-- Card 3: Debt & Equity Funding -->
+                    <div id="service-card-debt" data-storage-key="savedImage-debt" class="service-drop-zone group relative h-80 w-full rounded-lg shadow-xl overflow-hidden cursor-pointer" tabindex="0">
+                        <img id="service-img-debt" src="https://ik.imagekit.io/3o5ofvzg8/debt%20equity%20funding.png" alt="Financial documents and a calculator on a desk representing debt and equity funding" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-lg"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white w-full">
+                            <h3 class="text-2xl font-bold">Debt & Equity Funding</h3>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-sm p-6 text-center text-white flex flex-col justify-center items-center transform translate-y-full group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 ease-in-out">
+                            <h3 class="text-2xl font-bold">Debt & Equity Funding</h3>
+                            <p class="mt-2 text-sm text-slate-300">Navigate the complexities of capital raising with our strategic assistance for debt and equity funding.</p>
+                            <a href="#" class="mt-4 self-center inline-block rounded-md bg-white px-5 py-2 text-sm font-semibold text-black hover:bg-slate-100 transition-all shadow-md hover:shadow-lg">Read More</a>
+                        </div>
+                         <div class="drop-overlay hidden absolute inset-0 bg-black/70 border-4 border-dashed border-blue-500 rounded-lg items-center justify-center text-white font-bold text-xl pointer-events-none">Drop to replace image</div>
+                    </div>
+
+                    <!-- Card 4: Tax, Compliance -->
+                    <div id="service-card-tax" data-storage-key="savedImage-tax" class="service-drop-zone group relative h-80 w-full rounded-lg shadow-xl overflow-hidden cursor-pointer" tabindex="0">
+                        <img id="service-img-tax" src="https://ik.imagekit.io/3o5ofvzg8/governance,%20tax%20&%20compliance%20(1).png" alt="Person signing documents, representing tax and compliance services" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-lg"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white w-full">
+                            <h3 class="text-2xl font-bold">Tax, Compliance</h3>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-sm p-6 text-center text-white flex flex-col justify-center items-center transform translate-y-full group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 ease-in-out">
+                            <h3 class="text-2xl font-bold">Tax, Compliance</h3>
+                            <p class="mt-2 text-sm text-slate-300">Expert guidance on tax planning and ensuring full compliance with regulatory requirements.</p>
+                            <a href="#" class="mt-4 self-center inline-block rounded-md bg-white px-5 py-2 text-sm font-semibold text-black hover:bg-slate-100 transition-all shadow-md hover:shadow-lg">Read More</a>
+                        </div>
+                        <div class="drop-overlay hidden absolute inset-0 bg-black/70 border-4 border-dashed border-blue-500 rounded-lg items-center justify-center text-white font-bold text-xl pointer-events-none">Drop to replace image</div>
+                    </div>
+
+
+                    <!-- Card 5: Sustainability -->
+                    <div id="service-card-sustainability" data-storage-key="savedImage-sustainability" class="service-drop-zone group relative h-80 w-full rounded-lg shadow-xl overflow-hidden cursor-pointer" tabindex="0">
+                        <img id="service-img-sustainability" src="https://ik.imagekit.io/3o5ofvzg8/Sustainability%20&%20Strategic%20planning%20(1).png" alt="Wind turbines in a green field, representing sustainability services" class="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-lg"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white w-full">
+                            <h3 class="text-2xl font-bold">Sustainability</h3>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-sm p-6 text-center text-white flex flex-col justify-center items-center transform translate-y-full group-hover:translate-y-0 group-focus:translate-y-0 transition-transform duration-500 ease-in-out">
+                            <h3 class="text-2xl font-bold">Sustainability</h3>
+                            <p class="mt-2 text-sm text-slate-300">Integrating ESG principles and sustainability reporting to build resilient, future-ready businesses.</p>
+                            <a href="#" class="mt-4 self-center inline-block rounded-md bg-white px-5 py-2 text-sm font-semibold text-black hover:bg-slate-100 transition-all shadow-md hover:shadow-lg">Read More</a>
+                        </div>
+                         <div class="drop-overlay hidden absolute inset-0 bg-black/70 border-4 border-dashed border-blue-500 rounded-lg items-center justify-center text-white font-bold text-xl pointer-events-none">Drop to replace image</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-12 sm:py-8 px-4 sm:px-6 lg:px-8">
+            <div class="bg-[#0B142B] border border-white/20 rounded-2xl p-8 md:p-12">
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white text-center mb-12">Obtain Authorization from Government Regulatory Authorities</h2>
+                <div class="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-16 gap-y-16 items-center justify-items-center">
+                    <img class="h-45 w-auto opacity-70 hover:opacity-100 transition-opacity" src="https://ik.imagekit.io/3o5ofvzg8/output-onlinepngtools.png?updatedAt=1760154669326" alt="MSME Logo">
+                    <img class="h-30 w-auto opacity-70 hover:opacity-100 transition-opacity" src="https://ik.imagekit.io/3o5ofvzg8/ISO...png" alt="ISO Logo">
+                    <img class="h-30 w-auto opacity-70 hover:opacity-100 transition-opacity" src="https://ik.imagekit.io/3o5ofvzg8/Income%20tax%20(2).png" alt="Income Tax Logo">
+                    <img class="h-30 w-auto opacity-70 hover:opacity-100 transition-opacity" src="https://ik.imagekit.io/3o5ofvzg8/mca...png" alt="MCA Logo">
+                    <img class="h-30 w-auto opacity-70 hover:opacity-100 transition-opacity" src="https://ik.imagekit.io/3o5ofvzg8/DPIIT-logo-trans.png?updatedAt=1760154500111" alt="DPIIT Logo">
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-12 sm:py-8 px-4 sm:px-6 lg:px-8">
+             <div class="bg-white rounded-2xl p-8 md:p-12 lg:p-16 shadow-2xl shadow-blue-500/10 border border-slate-200">
+                <h2 class="text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl text-center mb-12">Our Trusted Partners</h2>
+                <div class="w-full overflow-hidden relative py-4" style="-webkit-mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent); mask-image: linear-gradient(to right, transparent, white 10%, white 90%, transparent);">
+                    <div class="flex animate-scroll-left space-x-24 items-center">
+                        <!-- Original Set -->
+                        <img class="h-24 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/phonepe__1_-removebg-preview.png" alt="Phonepe">
+                        <img class="h-20 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/HP.png" alt="HP">
+                        <img class="h-24 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/icici__1_-removebg-preview.png" alt="ICICI Bank">
+                        <img class="h-20 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/Amazon.png" alt="Amazon">
+                        <img class="h-16 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/HDFC.png" alt="HDFC Bank">
+                        <img class="h-16 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/adobe__1_-removebg-preview.png" alt="Adobe">
+                        <!-- Duplicated Set for seamless loop -->
+                        <img class="h-24 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/phonepe__1_-removebg-preview.png" alt="Phonepe">
+                        <img class="h-20 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/HP.png" alt="HP">
+                        <img class="h-24 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/icici__1_-removebg-preview.png" alt="ICICI Bank">
+                        <img class="h-20 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/Amazon.png" alt="Amazon">
+                        <img class="h-16 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/HDFC.png" alt="HDFC Bank">
+                        <img class="h-16 w-auto object-contain flex-shrink-0" src="https://ik.imagekit.io/3o5ofvzg8/adobe__1_-removebg-preview.png" alt="Adobe">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="bg-blue-50" style="background: #f7faff;">
+        <section class="py-16 sm:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Smart Solutions for Modern Businesses</h2>
+                    <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">
+                        All-in-one platform for online legal consultation, business incorporation, corporate compliance, and startup-friendly solutions—tailored for every industry.
+                    </p>
+                </div>
+                <div class="mt-12">
+                    <div id="service-tabs-container" class="flex justify-center flex-wrap gap-2 sm:gap-4">
+                        <button data-tab="Registrations" class="service-tab px-5 py-2 text-sm sm:text-base font-medium rounded-lg transition-colors duration-200 focus:outline-none bg-white text-gray-600 hover:bg-gray-100 border border-gray-200">Registrations</button>
+                        <button data-tab="Compliance" class="service-tab px-5 py-2 text-sm sm:text-base font-medium rounded-lg transition-colors duration-200 focus:outline-none bg-white text-gray-600 hover:bg-gray-100 border border-gray-200">Compliance</button>
+                        <button data-tab="IPR" class="service-tab px-5 py-2 text-sm sm:text-base font-medium rounded-lg transition-colors duration-200 focus:outline-none bg-blue-600 text-white">IPR</button>
+                        <button data-tab="Taxation" class="service-tab px-5 py-2 text-sm sm:text-base font-medium rounded-lg transition-colors duration-200 focus:outline-none bg-white text-gray-600 hover:bg-gray-100 border border-gray-200">Taxation</button>
+                        <button data-tab="MCA-Services" class="service-tab px-5 py-2 text-sm sm:text-base font-medium rounded-lg transition-colors duration-200 focus:outline-none bg-white text-gray-600 hover:bg-gray-100 border border-gray-200">MCA Services</button>
+                    </div>
+                </div>
+                <div class="mt-12 max-w-6xl mx-auto">
+                    <div id="tab-content-Registrations" class="tab-content hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                         <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-blue-100">
+                               <svg class="h-7 w-7 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.75M9 12h6.75m-6.75 5.25h6.75M5.25 6h.008v.008H5.25V6Zm.75 5.25h.008v.008H6v-.008Zm-.75 5.25h.008v.008H5.25v-.008Zm13.5-5.25h.008v.008h-.008v-.008Zm-.75 5.25h.008v.008h-.008v-.008Zm.75-10.5h.008v.008H18V6Z" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Private Limited Company</h3>
+                           <p class="mt-2 text-gray-600">Establish your business with a separate legal identity and limited liability to attract investors.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                            <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-teal-100">
+                               <svg class="h-7 w-7 text-teal-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Sole Proprietorship</h3>
+                           <p class="mt-2 text-gray-600">The simplest way to start your business as an individual owner, with full control and minimal compliance.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                            <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-indigo-100">
+                               <svg class="h-7 w-7 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.5-2.962A3.75 3.75 0 0 1 9 10.5V9A4.5 4.5 0 0 1 13.5 4.5v.75m-6 5.25v.75m3-3.75V9A1.5 1.5 0 0 1 9 7.5h1.5a1.5 1.5 0 0 1 1.5 1.5v.75m-7.5 3.75h10.5a2.25 2.25 0 0 0 2.25-2.25V6.75a2.25 2.25 0 0 0-2.25-2.25H6.75A2.25 2.25 0 0 0 4.5 6.75v10.5a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Partnership Firm</h3>
+                           <p class="mt-2 text-gray-600">Form a business with two or more partners, governed by a partnership deed for shared responsibilities.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                    </div>
+                    <div id="tab-content-Compliance" class="tab-content hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                            <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-cyan-100">
+                               <svg class="h-7 w-7 text-cyan-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0h18M9.75 14.25h4.5" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Annual Compliance (Pvt Ltd)</h3>
+                           <p class="mt-2 text-gray-600">Fulfill yearly legal obligations, including filing annual returns and financial statements with the ROC.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-sky-100">
+                               <svg class="h-7 w-7 text-sky-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0h18M9.75 14.25h.008v.008H9.75v-.008Zm3.75 0h.008v.008h-.008v-.008Zm3.75 0h.008v.008h-.008v-.008Z" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Annual Compliance (LLP)</h3>
+                           <p class="mt-2 text-gray-600">Ensure your LLP stays compliant by filing its annual returns and financial documents on time.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-rose-100">
+                               <svg class="h-7 w-7 text-rose-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5m8.25 3v6.75m4.5-6.75v6.75m-6.75-6.75v6.75m-1.5-9-1.5-3h9l-1.5 3" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Winding Up of a Company</h3>
+                           <p class="mt-2 text-gray-600">Navigate the legal process of closing your company smoothly and in compliance with all regulations.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                    </div>
+                    <div id="tab-content-IPR" class="tab-content grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-yellow-100">
+                               <svg class="h-7 w-7 text-yellow-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Trademark Registration</h3>
+                           <p class="mt-2 text-gray-600">File your trademark with expert support and secure your brand name today.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                       </div>
+                       <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-green-100">
+                               <svg class="h-7 w-7 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Copyright Registration</h3>
+                           <p class="mt-2 text-gray-600">Protect your original content and ideas by filing for copyright in your name.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                       </div>
+                       <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-orange-100">
+                               <svg class="h-7 w-7 text-orange-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.354a15.056 15.056 0 0 1-4.5 0m3.75-12.478a12.06 12.06 0 0 1-4.5 0m7.5 0a12.06 12.06 0 0 0-4.5 0m-3.75 0a15.056 15.056 0 0 0-4.5 0m19.5 0a12.06 12.06 0 0 0-4.5 0m0 0a12.06 12.06 0 0 1-4.5 0m0 0a12.06 12.06 0 0 0-4.5 0m0 0a12.06 12.06 0 0 1-4.5 0" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Patent Registration</h3>
+                           <p class="mt-2 text-gray-600">Secure your innovation with complete patent registration support.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                       </div>
+                    </div>
+                    <div id="tab-content-Taxation" class="tab-content hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                       <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-emerald-100">
+                               <svg class="h-7 w-7 text-emerald-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 14.25v-2.625m4.5 0v2.625m-3.75 0V15m-2.25 3.75h9.75A1.5 1.5 0 0 0 21 17.25V6.75a1.5 1.5 0 0 0-1.5-1.5h-9.75A1.5 1.5 0 0 0 3 6.75v10.5A1.5 1.5 0 0 0 4.5 18.75Zm0-12.75h9.75" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">GST Registration</h3>
+                           <p class="mt-2 text-gray-600">Obtain your GSTIN to legally collect taxes from customers and claim input tax credits.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-lime-100">
+                               <svg class="h-7 w-7 text-lime-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">VAT Registration</h3>
+                           <p class="mt-2 text-gray-600">Register for Value Added Tax for specific goods in compliance with state laws.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-amber-100">
+                               <svg class="h-7 w-7 text-amber-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Income Tax Filing</h3>
+                           <p class="mt-2 text-gray-600">File your business's annual income tax returns accurately and on time to stay compliant with tax laws.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                    </div>
+                    <div id="tab-content-MCA-Services" class="tab-content hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                       <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-violet-100">
+                               <svg class="h-7 w-7 text-violet-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Change in Authorized Capital</h3>
+                           <p class="mt-2 text-gray-600">Increase your company's share capital to accommodate future investments and expansion plans.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-fuchsia-100">
+                               <svg class="h-7 w-7 text-fuchsia-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Change Company Name</h3>
+                           <p class="mt-2 text-gray-600">Officially change your company's name through the proper legal procedure with the MCA.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 text-left">
+                           <div class="flex-shrink-0 h-14 w-14 flex items-center justify-center rounded-full bg-pink-100">
+                               <svg class="h-7 w-7 text-pink-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" /></svg>
+                           </div>
+                           <h3 class="mt-4 text-lg font-bold text-gray-800">Change in Object Clause</h3>
+                           <p class="mt-2 text-gray-600">Modify your company's main objectives to reflect changes in your business activities.</p>
+                           <a href="#" class="mt-4 inline-block text-brand-primary font-semibold hover:underline">Know More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Comparison Table Section -->
+        <section id="comparison-section" class="py-12 sm:py-8 px-4 sm:px-6 lg:px-8">
+            <div class="container mx-auto">
+                <div class="bg-blue-50 rounded-2xl p-4 sm:p-8 md:p-12 lg:p-16 shadow-2xl shadow-blue-500/10 border border-blue-200">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl">Effortless Registration & Filings with Formsy</h2>
+                        <p class="mt-4 max-w-3xl mx-auto text-lg text-brand-medium">
+                            Stop wrestling with complex government forms and hidden fees. Our experts streamline your company formation, GST registration, and compliance needs, saving you time and money.
+                        </p>
+                    </div>
+
+                    <div class="overflow-hidden rounded-lg border border-blue-200 shadow-sm">
+                        <!-- Desktop Table Header -->
+                        <div class="hidden md:grid md:grid-cols-2 text-center font-bold text-lg">
+                            <div class="p-4 bg-blue-100 border-b border-blue-200 md:border-r flex items-center justify-center gap-3 text-blue-800">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7">
+                                    <rect x="3" y="3" width="18" height="18" rx="4" fill="#3B82F6"></rect>
+                                    <path d="M8 12.5L11 15.5L16.5 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                                <span>Formsy</span>
+                            </div>
+                            <div class="p-4 bg-blue-100 border-b border-blue-200 text-blue-800 flex justify-center items-center">Others</div>
+                        </div>
+
+                        <!-- Rows Container -->
+                        <div>
+                            <!-- Row 1: Pricing -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 md:border-b border-blue-200">
+                                <div class="p-4 bg-white md:border-r border-blue-200">
+                                    <div class="flex items-center gap-3 text-blue-800 font-bold mb-3 md:hidden">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"><rect x="3" y="3" width="18" height="18" rx="4" fill="#3B82F6"></rect><path d="M8 12.5L11 15.5L16.5 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                        <span>Formsy</span>
+                                    </div>
+                                    <div class="flex items-start gap-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        <div>
+                                            <h4 class="font-bold text-brand-dark">Transparent Pricing for Business Registration</h4>
+                                            <p class="mt-1 text-brand-medium">All-inclusive quotes. No hidden fees or surprise charges, guaranteed.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gray-50 md:bg-white border-t border-blue-200 md:border-t-0">
+                                    <div class="font-bold text-blue-800 mb-3 md:hidden">Others</div>
+                                    <div class="flex items-start gap-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                                        <div>
+                                            <h4 class="font-bold text-brand-dark">Unexpected Costs & Vague Pricing</h4>
+                                            <p class="mt-1 text-brand-medium">Low initial prices often hide costly add-ons for essential services.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row 2: Guidance -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 md:border-b border-blue-200">
+                                <div class="p-4 bg-white md:border-r border-blue-200 border-t border-blue-200 md:border-t-0">
+                                    <div class="flex items-center gap-3 text-blue-800 font-bold mb-3 md:hidden">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"><rect x="3" y="3" width="18" height="18" rx="4" fill="#3B82F6"></rect><path d="M8 12.5L11 15.5L16.5 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                        <span>Formsy</span>
+                                    </div>
+                                    <div class="flex items-start gap-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        <div>
+                                            <h4 class="font-bold text-brand-dark">Expert Guidance from a Dedicated Executive</h4>
+                                            <p class="mt-1 text-brand-medium">A single point of contact manages your case from start to finish.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gray-50 md:bg-white border-t border-blue-200 md:border-t-0">
+                                    <div class="font-bold text-blue-800 mb-3 md:hidden">Others</div>
+                                     <div class="flex items-start gap-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                                        <div>
+                                            <h4 class="font-bold text-brand-dark">Fragmented Support & Communication</h4>
+                                            <p class="mt-1 text-brand-medium">You're passed between generic call centers, causing confusion and delays.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row 3: Service -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 md:border-b border-blue-200">
+                                <div class="p-4 bg-white md:border-r border-blue-200 border-t border-blue-200 md:border-t-0">
+                                   <div class="flex items-center gap-3 text-blue-800 font-bold mb-3 md:hidden">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"><rect x="3" y="3" width="18" height="18" rx="4" fill="#3B82F6"></rect><path d="M8 12.5L11 15.5L16.5 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                        <span>Formsy</span>
+                                    </div>
+                                     <div class="flex items-start gap-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        <div>
+                                            <h4 class="font-bold text-brand-dark">End-to-End Filing Service</h4>
+                                            <p class="mt-1 text-brand-medium">We handle the entire process for you, from document collection to final approval.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gray-50 md:bg-white border-t border-blue-200 md:border-t-0">
+                                    <div class="font-bold text-blue-800 mb-3 md:hidden">Others</div>
+                                     <div class="flex items-start gap-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                                        <div>
+                                            <h4 class="font-bold text-brand-dark">Partial & Incomplete Service</h4>
+                                            <p class="mt-1 text-brand-medium">They only handle parts of the process, leaving the difficult follow-ups to you.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row 4: Platform -->
+                            <div class="grid grid-cols-1 md:grid-cols-2">
+                                 <div class="p-4 bg-white md:border-r border-blue-200 border-t border-blue-200 md:border-t-0">
+                                    <div class="flex items-center gap-3 text-blue-800 font-bold mb-3 md:hidden">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"><rect x="3" y="3" width="18" height="18" rx="4" fill="#3B82F6"></rect><path d="M8 12.5L11 15.5L16.5 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                        <span>Formsy</span>
+                                    </div>
+                                    <div class="flex items-start gap-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                        <div>
+                                            <h4 class="font-bold text-brand-dark">Intuitive Platform for Easy Application</h4>
+                                            <p class="mt-1 text-brand-medium">Easily track your application status in real-time, 24/7.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-gray-50 md:bg-white border-t border-blue-200 md:border-t-0">
+                                    <div class="font-bold text-blue-800 mb-3 md:hidden">Others</div>
+                                     <div class="flex items-start gap-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500 flex-shrink-0 mt-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path></svg>
+                                        <div>
+                                            <h4 class="font-bold text-brand-dark">Clunky, Manual Processes</h4>
+                                            <p class="mt-1 text-brand-medium">Outdated methods using endless email chains are slow and lead to errors.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-8 pb-16 sm:pt-12 sm:pb-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="overflow-hidden rounded-2xl py-12 px-6 sm:px-12 shadow-2xl" style="background-image: radial-gradient(ellipse 50% 80% at 50% 50%, rgba(29, 78, 216, 0.3), transparent), linear-gradient(to right, #020d2e, #010615);">
+                    <div class="flex flex-col items-center justify-between gap-8 md:flex-row">
+                        <div class="text-center text-white md:text-left">
+                            <h2 class="text-3xl font-bold">Have Questions? Talk to Our Experts!</h2>
+                            <p class="mx-auto mt-2 max-w-lg text-slate-300 md:mx-0">Need personalized advice or have questions about your business registration or compliance? Our experienced team is ready to help you anytime.</p>
+                        </div>
+                        <div class="flex-shrink-0">
+                            <a href="tel:+918595430015" class="inline-flex items-center justify-center rounded-lg bg-gradient-to-r from-yellow-400 to-amber-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-amber-500/40 transition-all duration-300 hover:scale-105 hover:from-yellow-500 hover:to-amber-600">
+                                <span>Call Us Now</span>
+                                <span class="ml-2 font-semibold" aria-hidden="true">&gt;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="bg-slate-800 text-slate-400 border-t border-slate-700">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white">Formsy</h3>
+                        <p class="mt-4">123 Business Lane, Suite 100<br/>Startup City, ST 12345</p>
+                        <p class="mt-2">contact@formsy.com</p>
+                        <div class="flex space-x-4 mt-6">
+                           <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Facebook"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"></path></svg></a>
+                           <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Twitter"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.67.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.22-1.95-.55v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.5 20.33 8.79c0-.19 0-.38-.01-.57.84-.6 1.56-1.36 2.14-2.22z"></path></svg></a>
+                           <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.44-2.14 2.94v5.68h-3.56V9h3.42v1.56h.05c.47-.89 1.62-1.84 3.37-1.84 3.61 0 4.27 2.38 4.27 5.47v6.26zM5.34 7.44c-1.14 0-2.06-.92-2.06-2.06s.92-2.06 2.06-2.06 2.06.92 2.06 2.06-.92 2.06-2.06 2.06zM3.56 9h3.56v11.45H3.56V9z"></path></svg></a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-white">Services</h4>
+                        <ul class="mt-4 space-y-2">
+                            <li><a href="#" class="hover:text-white">Trademark Registration</a></li>
+                            <li><a href="#" class="hover:text-white">Company Incorporation</a></li>
+                            <li><a href="#" class="hover:text-white">GST Filing</a></li>
+                            <li><a href="#" class="hover:text-white">Compliance</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-white">Company</h4>
+                        <ul class="mt-4 space-y-2">
+                            <li><a href="/about.html" class="hover:text-white">About Us</a></li>
+                            <li><a href="/contact.html" class="hover:text-white">Contact Us</a></li>
+                            <li><a href="#" class="hover:text-white">Careers</a></li>
+                            <li><a href="#" class="hover:text-white">Blogs</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-white">Legal</h4>
+                        <ul class="mt-4 space-y-2">
+                            <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+                            <li><a href="#" class="hover:text-white">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-12 border-t border-slate-700 pt-8 text-center text-slate-500">
+                    <p>&copy; 2024 Formsy. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <div id="coming-soon-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-[100] flex justify-center items-center" aria-modal="true" role="dialog">
+        <div class="bg-slate-800 rounded-lg shadow-xl p-8 max-w-sm w-full m-4 border border-slate-700 relative text-center">
+            <h3 class="text-2xl font-bold text-white mb-4">Coming Soon!</h3>
+            <p class="text-slate-300 mb-6">We're working hard to bring this feature to you. Stay tuned!</p>
+            <button id="coming-soon-close-button" class="bg-brand-primary text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 transition-colors">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // All javascript has been moved to index.tsx to support ES6 modules.
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

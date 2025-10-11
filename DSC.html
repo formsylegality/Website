@@ -1,0 +1,611 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Signature Certificate (DSC) - Formsy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-primary': '#3B82F6',   // blue-500
+            'brand-secondary': '#2DD4BF', // teal-400
+            'brand-dark': '#111827',     // gray-900
+            'brand-medium': '#6B7280',   // gray-500
+            'brand-light': '#F9FAFB',    // gray-50
+            'brand-white': '#FFFFFF',
+            'brand-accent': '#F97316',   // orange-500 for services menu
+          },
+          fontFamily: {
+            sans: ['Arial', 'sans-serif'],
+          },
+        }
+      }
+    }
+    </script>
+    <style>
+      :root {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #F9FAFB;
+      }
+      .prose {
+            color: #374151; /* gray-700 */
+        }
+        .prose h3, .prose h4 {
+            color: #1e40af; /* blue-800 */
+            font-weight: 700;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+        .prose p, .prose ul, .prose ol {
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
+        }
+        .prose ul li::marker {
+            color: #3B82F6;
+        }
+        .prose a {
+            color: #3B82F6;
+            text-decoration: none;
+        }
+        .prose a:hover {
+            text-decoration: underline;
+        }
+        .prose .lead {
+            font-size: 1.25rem;
+            color: #4B5563; /* gray-600 */
+        }
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq-item[open] summary svg.transform {
+        transform: rotate(180deg);
+      }
+    </style>
+</head>
+<body class="font-sans">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 p-4">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="header-inner" class="flex items-center justify-between h-16 rounded-full border border-white/10 px-6 bg-black/50 backdrop-blur-lg shadow-xl">
+                <div class="flex-shrink-0">
+                     <a href="/index.html" class="flex items-center space-x-2 text-2xl font-bold text-white">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7">
+                            <rect x="3" y="3" width="18" height="18" rx="4" fill="white"></rect>
+                            <path d="M8 12.5L11 15.5L16.5 9" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        <span>Formsy</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex md:space-x-8">
+                    <a href="/about.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">About us</a>
+                    <div class="relative group" id="services-menu-container">
+                        <a href="/services.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium flex items-center">
+                            Services
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div class="absolute top-full -left-40 w-[1000px] bg-slate-900 shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto border border-slate-700 transform translate-y-4 group-hover:translate-y-0 z-50">
+                            <div class="p-8">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6">
+                                    <!-- Column 1: Startup & Taxation -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">1. Startup</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="private.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Private Limited Company Registration</a></li>
+                                            <li><a href="LLP.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">LLP Registration</a></li>
+                                            <li><a href="OPC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">OPC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">NGO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Indian Subsidiary Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Foreign Subsidiary Registration in India</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Registration</a></li>
+                                            <li><a href="Sole.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Sole Proprietorship Registration</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">4. Taxation</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Income Tax Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">80-IAC Tax Exemption for Startups</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Tax Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">GST Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">GST Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Cancel GST Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Additional Place of Business in GST</a></li>
+                                        </ul>
+                                    </div>
+                        
+                                    <!-- Column 2: Registrations & IPR -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">2. Registrations</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Startup India Registration</a></li>
+                                            <li><a href="IEC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Import Export Code Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">MSME Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Shop & Establishment Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">BIS Certification</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Darpan Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">12A and 80G Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">RCMC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">PTEC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ICEGATE Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">EPR Registration</a></li>
+                                            <li><a href="DSC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Digital Signature Certificate</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">5. IPR</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trademark Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Copyright Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trademark Opposition</a></li>
+                                        </ul>
+                                    </div>
+                        
+                                    <!-- Column 3: Compliances & Licenses -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">3. Compliances</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Virtual Office</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">EPFO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ESIC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">LLP Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Company Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change Private Limited Company Name</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change in Object Clause</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change in Designated Partner</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">6. Licenses</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">FSSAI Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ISO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trade License</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Gumasta License</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">RERA Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Hallmark Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">APEDA Registration</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                         <a href="#" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium flex items-center">
+                            Resources
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div class="absolute top-full left-0 mt-4 w-48 bg-slate-900 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto border border-slate-700">
+                            <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800">Tools & Calculators</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800">Regulatory</a>
+                            
+                        </div>
+                    </div>
+                    <a href="#" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Blogs & Guides</a>
+                    <a href="partner.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Partner with us</a>
+                    <a href="contact.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Contact us</a>
+                </nav>
+                <div class="hidden md:flex items-center space-x-4">
+                     <a href="#" class="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                        <span>Talk to Experts</span>
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button aria-label="Open menu">
+                        <svg class="h-6 w-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="text-brand-dark">
+        <!-- HERO SECTION -->
+        <section class="bg-gradient-to-b from-sky-100 to-white pt-32 pb-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-5 gap-12 items-start">
+                    <div class="lg:col-span-3">
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark leading-tight">Digital Signature Certificate</h1>
+                        <p class="mt-4 text-lg text-brand-medium">Secure your online transactions with a Class 3 Digital Signature Certificate (DSC) — the highest level of digital authentication trusted for e-filing, government tenders, and legal contracts across India. Get seamless, expert assistance with Formsy to quickly obtain your Class 3 DSC and ensure hassle-free compliance.</p>
+                        <ul class="mt-6 space-y-3">
+                            <li class="flex items-center text-brand-medium"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Government-approved Class 3 DSC</li>
+                            <li class="flex items-center text-brand-medium"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Valid for Legal & Financial Transactions</li>
+                            <li class="flex items-center text-brand-medium"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Minimal Document Verification</li>
+                            <li class="flex items-center text-brand-medium"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Works with GST, MCA, e-Tenders</li>
+                            <li class="flex items-center text-brand-medium"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Transparent Pricing, No Hidden Charges</li>
+                        </ul>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <div class="bg-white rounded-xl shadow-2xl p-6 border border-gray-100">
+                            <h3 class="text-xl font-bold text-center text-brand-dark">Get Your DSC with Expert Help</h3>
+                            <form class="mt-6 space-y-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700">Full Name*</label>
+                                    <input type="text" id="name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number*</label>
+                                    <input type="tel" id="phone" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Enter Your Email*</label>
+                                    <input type="email" id="email" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+                                </div>
+                                <button type="submit" class="w-full bg-brand-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Claim Your Free Consultation</button>
+                                <p class="text-xs text-center text-gray-500 mt-4">By clicking, you consent to receiving updates about our services as outlined in our Privacy Statement.</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN CONTENT SECTION -->
+        <section class="py-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+                    <aside class="lg:col-span-1 lg:sticky top-28 self-start">
+                        <div class="bg-slate-100 rounded-lg p-4">
+                            <h3 class="font-bold text-lg text-brand-dark mb-4">Index</h3>
+                            <nav id="page-nav">
+                                <ul class="space-y-1">
+                                     <li><a href="#what-is-dsc" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">What is a DSC?</a></li>
+                                    <li><a href="#benefits" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Benefits of DSC</a></li>
+                                    <li><a href="#dsc-classes" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">DSC Classes</a></li>
+                                    <li><a href="#what-is-class3" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">What is a Class 3 DSC?</a></li>
+                                    <li><a href="#who-needs-dsc" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Who Needs a Class 3 DSC?</a></li>
+                                    <li><a href="#types-of-class3" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Types of Class 3 DSC</a></li>
+                                    <li><a href="#how-to-apply" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">How to Apply</a></li>
+                                    <li><a href="#documents-required" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Documents Required</a></li>
+                                    <li><a href="#cost" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Cost of Class 3 DSC</a></li>
+                                    <li><a href="#validity-and-renewal" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Validity & Renewal</a></li>
+                                    <li><a href="#faq" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">FAQs</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </aside>
+                    
+                    <div class="lg:col-span-3 space-y-8 prose prose-lg max-w-none">
+                        <section id="what-is-dsc">
+                            <h3>What is a Digital Signature Certificate (DSC)?</h3>
+                            <p>A Digital Signature Certificate (DSC) is a secure electronic credential that verifies your identity in the digital world, serving as a legally valid alternative to a handwritten signature. It uses advanced cryptographic techniques to link your identity to a digital document, generating a unique encrypted hash with your private key, which can be verified by others using your public key to ensure document authenticity and integrity.</p>
+                        </section>
+
+                        <section id="benefits">
+                            <h3>Benefits of a Digital Signature Certificate</h3>
+                            <p>Even individuals and professionals can significantly benefit from a digital signature certificate:</p>
+                            <ul>
+                                <li><strong>Faster Processes:</strong> Speed up online applications by eliminating printing and physical signatures, enabling instant signing and quicker approvals.</li>
+                                <li><strong>Enhanced Security:</strong> Protect your data with cryptographic encryption that creates a unique, tamper-proof digital fingerprint tied to your identity.</li>
+                                <li><strong>Convenience:</strong> Sign documents remotely anytime, anywhere using a portable USB token without the need for physical presence.</li>
+                                <li><strong>Reduced Paperwork:</strong> Support a paperless workflow by minimizing printing, storage, and physical files, saving costs, and promoting sustainability.</li>
+                                <li><strong>Online Tax Filing:</strong> Securely e-file income tax returns with strong authentication, ensuring genuine submission and faster processing.</li>
+                                <li><strong>Online Banking & Transactions:</strong> Add an extra security layer for critical banking operations, preventing unauthorized transactions and phishing.</li>
+                            </ul>
+                        </section>
+
+                        <section id="dsc-classes">
+                            <h3>What are the Types of Digital Signature Certificate Classes?</h3>
+                            <p>The classes of DSCs were primarily distinguished by the level of verification required to issue them and the associated level of trust and security they offered.</p>
+                            <img src="https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?q=80&w=1930&auto=format&fit=crop" alt="Abstract image of digital security locks" class="w-full rounded-lg shadow-md my-8">
+                            <h4>1. Class 1 DSC (Discontinued)</h4>
+                            <p><strong>Purpose:</strong> These certificates offered the lowest level of assurance and were typically issued for low-risk online interactions, primarily for securing personal email communication.<br><strong>Verification:</strong> Identity verification for Class 1 DSCs was basic, typically involving the validation of the user's name and email address against a database.<br><strong>Status:</strong> Class 1 DSCs are no longer accepted for any official use and have been discontinued.</p>
+                            <h4>2. Class 2 DSC (Phased Out in 2021)</h4>
+                            <p><strong>Purpose:</strong> Class 2 DSC provided a moderate level of assurance. They were widely used for various e-filings with government departments, such as:<br>
+                            - Income Tax Return (ITR) e-filing<br>
+                            - Goods and Services Tax (GST) e-filing<br>
+                            - Ministry of Corporate Affairs (MCA21) filings (for company registration, annual returns, etc.)<br>
+                            - LLP registration<br>
+                            - Trademark & Patent filings<br>
+                            - Import Export Code (IEC) applications.<br>
+                            <strong>Verification:</strong> Identity verification for Class 2 DSCs involved confirming the applicant's identity against well-recognized consumer databases and required submission of identity and address proofs.<br>
+                            <strong>Status:</strong> Class 2 DSCs were phased out from January 1, 2021. The CCA mandated this change to enhance digital security standards and reduce the risk of cyber fraud. All applications that previously required a Class 2 DSC now require a Class 3 DSC.</p>
+                            <h4>3. Class 3 DSC (Currently Active and Mandatory)</h4>
+                            <p><strong>Purpose:</strong> Class 3 DSCs offer the highest level of security and assurance. They are designed for high-value and high-risk transactions where stringent identity verification is paramount.<br>
+                            <strong>Current Usage:</strong> Class 3 DSC is now mandatory for virtually all official, legal, and e-compliance activities in India, including:<br>
+                            - e-Tendering and e-Procurement: Essential for participating in government and private online auctions, tenders, and bids.<br>
+                            - MCA21 Filings: All forms related to company incorporation, annual returns, compliance, etc.<br>
+                            - Income Tax e-filing: Mandatory for certain categories of taxpayers (e.g., those requiring tax audits).<br>
+                            - GST Filings: For various GST-related forms and returns.<br>
+                            - Customs e-filing: For import and export documentation.<br>
+                            - e-Bidding and e-Auction: In various sectors requiring high security.<br>
+                            - Trademark & Patent filings.<br>
+                            - Court filings (e-Courts).<br>
+                            - Signing contracts and agreements where legal enforceability and high assurance are required.<br>
+                            <strong>Verification:</strong> The verification for Class 3 DSC is the most rigorous, often requiring:<br>
+                            - Aadhaar eKYC (OTP): A common method for identity verification.<br>
+                            - Video Verification: A recorded video to confirm the applicant's identity and documents.<br>
+                            <strong>Security:</strong> Private key generation and storage for Class 3 DSCs must be on a secure hardware cryptographic device (like a USB token) validated to FIPS 140-2 Level 2 standards. This ensures the private key cannot be easily extracted or tampered with.<br>
+                            <strong>Status:</strong> Class 3 DSC is the only valid and accepted certificate as per current government regulations for almost all secure online processes.</p>
+                        </section>
+
+                        <section id="what-is-class3">
+                            <h3>What is a Class 3 DSC?</h3>
+                            <p>A Digital Signature Certificate (DSC) is a digital equivalent of a handwritten signature. A Class 3 DSC is the highest level of DSC available in India. It provides the strongest security and is used for important and high-risk transactions.</p>
+                            <p>Class 3 DSC is issued by licensed Certifying Authorities (CAs) under the Information Technology Act, 2000. They issue it after a strict verification process, which may include in-person or video verification.</p>
+                            <p>In simple terms, a Class 3 DSC functions like your most secure online identity card, verifying who you are and ensuring that your transactions are protected from tampering. It is available in a physical token format (USB device) that must be connected to your computer to use the certificate securely.</p>
+                            
+                            <h4>Why Class 3 DSC Became Mandatory?</h4>
+                            <p>The shift to exclusively Class 3 DSCs was driven by the need to enhance overall digital security and build greater trust in online transactions. Class 3 DSCs require strict identity verification and secure private key storage, making them highly reliable for sensitive online operations.</p>
+                            <p>This significantly reduces the risk of cyber fraud and ensures that only verified individuals or entities can perform critical digital activities.</p>
+                            <p>Digital Signature Certificates (DSCs) are also categorized as Individual and Organisational types based on the applicant’s identity. While Individual DSCs are issued to a person for personal or professional use, Organisational DSCs are issued to employees or representatives on behalf of a business or entity.</p>
+                            
+                            <h4>Key Reasons to Choose Class 3 DSC in India</h4>
+                            <p>A Class 3 DSC is often referred to as the “gold standard” due to its unparalleled trust level in digital transactions. Here’s why:</p>
+                            <ul>
+                                <li><strong>Highest level of security:</strong> Uses advanced encryption to protect data from unauthorized access and is legally accepted throughout India for official electronic signatures.</li>
+                                <li><strong>Mandatory for critical transactions:</strong> Required for activities such as:
+                                    <ul>
+                                        <li>E-tendering, online procurement, and e-auctions</li>
+                                        <li>GST filings and MCA21 company filings</li>
+                                        <li>Income Tax Department e-filing and tax-related submissions</li>
+                                        <li>Patent registration under the Indian Patent Office</li>
+                                        <li>Trademark registration under the Trademark Registry</li>
+                                        <li>DGFT (Directorate General of Foreign Trade) / IEC (Import Export Code) registration</li>
+                                        <li>EPFO (Employees’ Provident Fund Organisation) registration</li>
+                                        <li>ICEGATE (Indian Customs Electronic Gateway) customs clearance</li>
+                                        <li>Accessing various other government portals and services</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Legally valid under the IT Act, 2000:</strong> Recognized as a secure way to sign documents electronically in India.</li>
+                                <li><strong>Prevents fraud and impersonation:</strong> Reduces the risk of identity theft during online processes.</li>
+                            </ul>
+                            <p>In short, if your work involves high-value or sensitive online transactions, a Class 3 DSC is the safest and most reliable choice.</p>
+                        </section>
+
+                        <section id="who-needs-dsc">
+                            <h3>Who Needs a Class 3 DSC?</h3>
+                            <p>The Class 3 DSC's purpose is to ensure secure and legally valid digital transactions. It is required by anyone involved in secure, high-value, or legally binding online transactions.</p>
+                            <h4>1. Businesses and Organizations</h4>
+                            <p>Many businesses must use a Class 3 DSC to comply with government regulations and participate in online processes, such as:</p>
+                            <ul>
+                                <li>Companies taking part in e-tendering and e-procurement.</li>
+                                <li>Exporters and importers registered with DGFT (Directorate General of Foreign Trade).</li>
+                                <li>Entities filing compliance documents on the MCA (Ministry of Corporate Affairs) and GST portals.</li>
+                                <li>Corporations involved in secure online bidding or auctions.</li>
+                                <li>Professionals and businesses use them to file intellectual property applications.</li>
+                            </ul>
+                            <p><em>Note: Companies often require a board resolution to authorize an individual to obtain a DSC on behalf of the company.</em></p>
+                            <h4>2. Individuals and Professionals</h4>
+                            <p>Certain individuals also need a Class 3 DSC for their professional activities, such as:</p>
+                            <ul>
+                                <li>Chartered accountants, company secretaries, and lawyers handling legal or compliance filings.</li>
+                                <li>Independent contractors participating in government bids.</li>
+                                <li>Professionals use secure portals like IRCTC for specialized bookings or transactions.</li>
+                                <li>Vendors selling to government departments through e-marketplaces.</li>
+                                <li>Importers and exporters use it for customs clearance and other trade-related documents.</li>
+                                <li>Anyone needing to sign legally valid documents online.</li>
+                            </ul>
+                        </section>
+                        
+                        <section id="types-of-class3">
+                            <h3>Types of Class 3 DSC in India</h3>
+                            <p>A Class 3 DSC can be issued in different formats, depending on the type of security and usage required.</p>
+                            <img src="https://images.unsplash.com/photo-1616401784845-180844d18608?q=80&w=1470&auto=format&fit=crop" alt="Person using a USB token with a laptop" class="w-full rounded-lg shadow-md my-8">
+                            <h4>1. Signing Certificates for Document Authentication</h4>
+                            <p>These certificates are used to digitally sign documents, ensuring the signer’s identity and the document’s integrity. They are widely used for legal contracts, compliance forms, and official correspondence.</p>
+                            <h4>2. Combo Certificates</h4>
+                            <p>A combination of signing and encryption certificates provides complete security, allowing users to both sign documents and encrypt data (convert information into a coded format so only authorized parties can read it). This is the most versatile option for businesses and professionals who need all-in-one protection.</p>
+                        </section>
+
+                        <section>
+                            <h3>Benefits of Using a Class 3 DSC</h3>
+                            <p>A Class 3 DSC offers multiple advantages for businesses, professionals, and organizations involved in secure online transactions, such as:</p>
+                            <ul>
+                                <li><strong>Enhanced Security and Unwavering Trust:</strong> A Class 3 DSC uses advanced encryption and authentication methods to protect data from tampering and unauthorized access. It assures the recipient that the document or transaction truly comes from the verified user.</li>
+                                <li><strong>Legal Validity and Seamless Compliance:</strong> Under the Information Technology Act, 2000, a Class 3 DSC holds the same legal value as a handwritten signature. It helps meet compliance requirements on platforms like MCA, DGFT, GST, etc., without the need for physical paperwork.</li>
+                                <li><strong>Streamlined Online Transactions and Processes:</strong> Whether for e-tendering, e-auctions, or government filings, a Class 3 DSC simplifies the process by replacing manual signatures and in-person submissions with secure digital authentication.</li>
+                                <li><strong>Significant Savings in Time and Cost:</strong> By reducing paperwork, courier charges, and the need for physical presence, a Class 3 DSC saves both time and money. Transactions can be completed within minutes from anywhere in the world.</li>
+                            </ul>
+                        </section>
+
+                        <section id="how-to-apply">
+                            <h3>How to Apply for Class 3 DSC in India?</h3>
+                            <p>The process to apply for a Class 3 DSC involves a few important steps. Follow this simple process to get your Class 3 DSC quickly and securely:</p>
+                            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1470&auto=format&fit=crop" alt="People discussing documents in a meeting" class="w-full rounded-lg shadow-md my-8">
+                            <p><strong>Step 1: Choosing a Certifying Authority (CA)</strong><br>Select a licensed CA approved by the Government of India. You can find the list of authorized CAs on the official Controller of Certifying Authorities (CCA) portal (cca.gov.in).</p>
+                            <p><strong>Step 2: Filling out the Application Form</strong><br>Complete the application form provided on the CA’s website. Ensure all details are accurate to avoid delays.</p>
+                            <p><strong>Step 3: Submitting Proof of Identity and Address</strong><br>Submit valid identity and address documents such as Aadhaar card, PAN card (mandatory), Passport, bank statement, or Voter ID. The documents must match the details provided in the application.</p>
+                            <p><strong>Step 4: Complete e-KYC Verification</strong><br>This step may involve:<br>- Aadhaar OTP verification<br>- Video KYC<br>The exact process depends on the Certifying Authority.</p>
+                            <p><strong>Step 5: Making Payment</strong><br>Pay the applicable fee for the Class 3 DSC online or offline, depending on the CA’s payment options. Prices may vary slightly between providers.</p>
+                            <p><strong>Step 6: Issuance of DSC Token</strong><br>After successful verification and payment, the Certifying Authority will issue your Class 3 DSC. You will receive a USB token or a downloadable digital certificate to use for signing and encryption.</p>
+                        </section>
+                        
+                        <section id="documents-required">
+                            <h3>Documents Required for Class 3 DSC in India</h3>
+                            <p>To apply for a Class 3 DSC, you need to submit specific documents depending on whether you are an individual or representing an organization. Here’s the list of documents:</p>
+                            <h4>1. Documents Required for an Individual</h4>
+                            <ul>
+                                <li><strong>Identity Proof:</strong> Valid government-issued ID such as Aadhaar Card, PAN Card, Passport, or Voter ID.</li>
+                                <li><strong>Address Proof:</strong> Documents like Aadhaar Card, Passport, Voter ID, or Utility Bills that confirm your residential address.</li>
+                                <li><strong>Photograph:</strong> Recent passport-sized photograph as per CA guidelines.</li>
+                                <li><strong>Video Verification:</strong> Some Certifying Authorities require a short video verification call to confirm your identity as part of the Class 3 DSC process.</li>
+                            </ul>
+                            <h4>2. Documents Required for Organizations</h4>
+                            <p>The documents vary depending on the type of organization applying for the Class 3 DSC.</p>
+                            <p><strong>a. Partnership Firm</strong></p>
+                            <ul>
+                                <li>Partnership deed</li>
+                                <li>PAN card of the firm</li>
+                                <li>Proof of address of the firm</li>
+                                <li>Identity and address proof of partners</li>
+                            </ul>
+                            <p><strong>b. Private Limited/Limited Company</strong></p>
+                            <ul>
+                                <li>Certificate of Incorporation</li>
+                                <li>Board Resolution approving DSC issuance</li>
+                                <li>PAN card of the company</li>
+                                <li>Identity and address proof of the authorized signatory</li>
+                            </ul>
+                             <p><strong>c. NGO (Non-Governmental Organization) /TRUST/ AOP (Association of Persons)</strong></p>
+                            <ul>
+                                <li>Registration certificate of NGO/Trust/AOP</li>
+                                <li>PAN card of the entity</li>
+                                <li>Trust deed or registration documents</li>
+                                <li>Identity and address proof of the authorized signatory</li>
+                            </ul>
+                             <p><strong>d. Joint Venture</strong></p>
+                            <ul>
+                                <li>JV agreement</li>
+                                <li>Certificate of incorporation/registration of JV partners</li>
+                                <li>PAN cards of the partners</li>
+                                <li>Identity and address proof of the authorized signatory</li>
+                            </ul>
+                        </section>
+
+                        <section id="cost">
+                            <h3>The Cost of Class 3 DSC in India</h3>
+                            <p>Understanding the cost of a Class 3 Digital Signature Certificate helps you plan your budget effectively.</p>
+                            <h4>Class 3 DSC Price Range</h4>
+                            <ul>
+                                <li>For a 1-year validity, prices usually range from ₹1,000 to ₹2,500.</li>
+                                <li>For 2 or 3 years, prices typically increase proportionally, often up to ₹5,000, depending on the CA and certificate type.</li>
+                                <li>Combo certificates that include both signing and encryption are generally priced higher than signing-only certificates.</li>
+                            </ul>
+                             <h4>Factors Affecting Class 3 DSC Price</h4>
+                             <p>Several factors affect the Class 3 DSC price, including:</p>
+                             <ul>
+                                <li>Depending on the CA chosen, which may charge differently based on its service.</li>
+                                <li>The type of DSC, whether it is signing-only, encryption-only, or combo certificates.</li>
+                                <li>The validity period, as DSCs are available for 1, 2, or 3 years. Longer durations cost more upfront but save on renewal fees.</li>
+                                <li>Additional services like video verification, USB tokens, or priority processing may add to the cost.</li>
+                             </ul>
+                        </section>
+
+                        <section id="validity-and-renewal">
+                            <h3>DSC Validity and Renewal Process</h3>
+                            <p>A Class 3 DSC is valid for a fixed period, after which it must be renewed to continue its use.</p>
+                            <ul>
+                                <li><strong>Validity Period:</strong> Most Class 3 DSCs are issued for 1 to 3 years.</li>
+                                <li><strong>Renewal Timeline:</strong> You can renew your DSC up to 30 days before it expires.</li>
+                                <li><strong>Renewal Process:</strong><br>
+                                    - Submit a renewal application with updated documents if required.<br>
+                                    - Complete any required identity verification, including video verification if applicable.<br>
+                                    - Pay the renewal fee based on your chosen validity period.
+                                </li>
+                                <li><strong>Consequences of Expiry:</strong> If your DSC expires, you will not be able to use it for signing or encryption until it is renewed. This may delay online filings or transactions.</li>
+                            </ul>
+                        </section>
+                        
+                        <div class="bg-blue-50 rounded-lg p-6 flex flex-col sm:flex-row justify-between items-center my-8 gap-4 text-center sm:text-left">
+                            <div>
+                                <h4 class="font-bold text-xl text-brand-dark">Secure Your Digital Identity Today!</h4>
+                                <p class="text-brand-medium mt-1">Get your Class 3 DSC with expert assistance from Formsy. Fast, secure, and hassle-free.</p>
+                            </div>
+                            <a href="partner.html" class="not-prose bg-brand-primary font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap"><span class="text-white">Apply Now</span></a>
+                        </div>
+                        
+                        <section id="faq">
+                            <h3>Frequently Asked Questions</h3>
+                            <div class="mt-6 space-y-4">
+                                <details class="faq-item bg-slate-50 border border-slate-200 rounded-lg p-4 cursor-pointer transition-all duration-300">
+                                    <summary class="font-semibold text-lg flex justify-between items-center">Why were Class 1 & 2 DSCs phased out?<svg class="h-6 w-6 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary>
+                                    <p class="mt-4 text-brand-medium">They were phased out to enhance overall digital security across India. By mandating Class 3, which requires the highest level of identity verification, the government aims to reduce the risk of cyber fraud and build greater trust in online transactions.</p>
+                                </details>
+                                <details class="faq-item bg-slate-50 border border-slate-200 rounded-lg p-4 cursor-pointer transition-all duration-300">
+                                    <summary class="font-semibold text-lg flex justify-between items-center">Can I use my DSC on multiple computers?<svg class="h-6 w-6 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary>
+                                    <p class="mt-4 text-brand-medium">Yes. The DSC is stored on a portable USB token (like a pen drive). You can plug this token into any computer with the necessary drivers installed to sign documents digitally.</p>
+                                </details>
+                                <details class="faq-item bg-slate-50 border border-slate-200 rounded-lg p-4 cursor-pointer transition-all duration-300">
+                                    <summary class="font-semibold text-lg flex justify-between items-center">What happens if I lose my DSC USB token?<svg class="h-6 w-6 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary>
+                                    <p class="mt-4 text-brand-medium">If you lose your token, you must immediately contact your Certifying Authority (CA) to revoke the certificate to prevent any misuse. After revocation, you will need to apply for a new DSC.</p>
+                                </details>
+                                 <details class="faq-item bg-slate-50 border border-slate-200 rounded-lg p-4 cursor-pointer transition-all duration-300">
+                                    <summary class="font-semibold text-lg flex justify-between items-center">What is the difference between a "Signing" and a "Combo" certificate?<svg class="h-6 w-6 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary>
+                                    <p class="mt-4 text-brand-medium">A "Signing" certificate is used only to digitally sign and authenticate documents. A "Combo" or "Sign & Encrypt" certificate includes both signing and encryption capabilities, allowing you to not only sign documents but also encrypt data for secure communication, such as emails or files.</p>
+                                </details>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 border-t border-slate-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-white">Formsy</h3>
+                    <p class="mt-4">123 Business Lane, Suite 100<br/>Startup City, ST 12345</p>
+                    <p class="mt-2">contact@formsy.com</p>
+                    <div class="flex space-x-4 mt-6">
+                       <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Facebook"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"></path></svg></a>
+                       <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Twitter"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.67.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.22-1.95-.55v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.5 20.33 8.79c0-.19 0-.38-.01-.57.84-.6 1.56-1.36 2.14-2.22z"></path></svg></a>
+                       <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.44-2.14 2.94v5.68h-3.56V9h3.42v1.56h.05c.47-.89 1.62-1.84 3.37-1.84 3.61 0 4.27 2.38 4.27 5.47v6.26zM5.34 7.44c-1.14 0-2.06-.92-2.06-2.06s.92-2.06 2.06-2.06 2.06.92 2.06 2.06-.92 2.06-2.06 2.06zM3.56 9h3.56v11.45H3.56V9z"></path></svg></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg text-white">Services</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="hover:text-white">Trademark Registration</a></li>
+                        <li><a href="#" class="hover:text-white">Company Incorporation</a></li>
+                        <li><a href="#" class="hover:text-white">GST Filing</a></li>
+                        <li><a href="#" class="hover:text-white">Compliance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg text-white">Company</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="/about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="/contact.html" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">Careers</a></li>
+                        <li><a href="#" class="hover:text-white">Blogs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg text-white">Legal</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-white">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-slate-700 pt-8 text-center text-slate-500">
+                <p>&copy; 2024 Formsy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('#page-nav a');
+            const sections = Array.from(document.querySelectorAll('main section[id], main div[id]')).filter(el => el.id);
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const navLink = document.querySelector(`#page-nav a[href="#${id}"]`);
+                    if (!navLink) return;
+
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                         navLinks.forEach(link => {
+                            link.classList.remove('bg-blue-100', 'text-brand-primary', 'font-semibold');
+                            link.classList.add('text-slate-600');
+                         });
+                         navLink.classList.add('bg-blue-100', 'text-brand-primary', 'font-semibold');
+                         navLink.classList.remove('text-slate-600');
+                    }
+                });
+            }, { rootMargin: '-40% 0px -60% 0px', threshold: 0.3 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

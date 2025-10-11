@@ -1,0 +1,637 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Private Limited Company Registration - Formsy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-primary': '#3B82F6',   // blue-500
+            'brand-secondary': '#2DD4BF', // teal-400
+            'brand-dark': '#111827',     // gray-900
+            'brand-medium': '#6B7280',   // gray-500
+            'brand-light': '#F9FAFB',    // gray-50
+            'brand-white': '#FFFFFF',
+            'brand-accent': '#F97316',   // orange-500 for services menu
+          },
+          fontFamily: {
+            sans: ['Arial', 'sans-serif'],
+          },
+        }
+      }
+    }
+    </script>
+    <style>
+      :root {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #F9FAFB;
+      }
+      .prose {
+            color: #374151; /* gray-700 */
+        }
+        .prose h3 {
+            color: #1e40af; /* blue-800 */
+            font-weight: 700;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+        .prose p, .prose ul, .prose ol {
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
+        }
+        .prose ul li::marker {
+            color: #3B82F6;
+        }
+        .prose a {
+            color: #3B82F6;
+            text-decoration: none;
+        }
+        .prose a:hover {
+            text-decoration: underline;
+        }
+        .prose .lead {
+            font-size: 1.25rem;
+            color: #4B5563; /* gray-600 */
+        }
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq-item[open] summary svg.transform {
+        transform: rotate(180deg);
+      }
+    </style>
+</head>
+<body class="font-sans">
+
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 p-4">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="header-inner" class="flex items-center justify-between h-16 rounded-full border border-white/10 px-6 bg-black/50 backdrop-blur-lg shadow-xl">
+                <div class="flex-shrink-0">
+                     <a href="/index.html" class="flex items-center space-x-2 text-2xl font-bold text-white">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7">
+                            <rect x="3" y="3" width="18" height="18" rx="4" fill="white"></rect>
+                            <path d="M8 12.5L11 15.5L16.5 9" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        <span>Formsy</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex md:space-x-8">
+                    <a href="/about.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">About us</a>
+                    <div class="relative group" id="services-menu-container">
+                        <a href="/services.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium flex items-center">
+                            Services
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div class="absolute top-full -left-40 w-[1000px] bg-slate-900 shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto border border-slate-700 transform translate-y-4 group-hover:translate-y-0 z-50">
+                            <div class="p-8">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6">
+                                    <!-- Column 1: Startup & Taxation -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">1. Startup</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="private.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Private Limited Company Registration</a></li>
+                                            <li><a href="LLP.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">LLP Registration</a></li>
+                                            <li><a href="OPC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">OPC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">NGO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Indian Subsidiary Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Foreign Subsidiary Registration in India</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Registration</a></li>
+                                            <li><a href="Sole.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Sole Proprietorship Registration</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">4. Taxation</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Income Tax Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">80-IAC Tax Exemption for Startups</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Tax Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">GST Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">GST Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Cancel GST Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Additional Place of Business in GST</a></li>
+                                        </ul>
+                                    </div>
+                        
+                                    <!-- Column 2: Registrations & IPR -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">2. Registrations</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Startup India Registration</a></li>
+                                            <li><a href="IEC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Import Export Code Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">MSME Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Shop & Establishment Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">BIS Certification</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Darpan Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">12A and 80G Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">RCMC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">PTEC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ICEGATE Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">EPR Registration</a></li>
+                                            <li><a href="DSC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Digital Signature Certificate</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">5. IPR</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trademark Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Copyright Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trademark Opposition</a></li>
+                                        </ul>
+                                    </div>
+                        
+                                    <!-- Column 3: Compliances & Licenses -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">3. Compliances</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Virtual Office</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">EPFO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ESIC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">LLP Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Company Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change Private Limited Company Name</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change in Object Clause</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change in Designated Partner</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">6. Licenses</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">FSSAI Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ISO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trade License</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Gumasta License</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">RERA Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Hallmark Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">APEDA Registration</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                         <a href="#" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium flex items-center">
+                            Resources
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div class="absolute top-full left-0 mt-4 w-48 bg-slate-900 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto border border-slate-700">
+                            <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800">Tools & Calculators</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800">Regulatory</a>
+                            
+                        </div>
+                    </div>
+                    <a href="#" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Blogs & Guides</a>
+                    <a href="partner.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Partner with us</a>
+                    <a href="contact.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Contact us</a>
+                </nav>
+                <div class="hidden md:flex items-center space-x-4">
+                     <a href="#" class="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                        <span>Talk to Experts</span>
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button aria-label="Open menu">
+                        <svg class="h-6 w-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="text-brand-dark">
+        <!-- HERO SECTION -->
+        <section class="bg-gradient-to-b from-sky-100 to-white pt-32 pb-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-5 gap-12 items-start">
+                    <div class="lg:col-span-3">
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-brand-dark leading-tight">Private Limited Company Registration Online in India</h1>
+                        <p class="mt-4 text-lg text-brand-medium">Looking to register a Private Limited Company (Pvt Ltd Company) in India? Launch now in India the Right Way—100% Online, Fast, and Professionally Assisted.</p>
+                        <ul class="mt-6 space-y-3">
+                            <li class="flex items-center text-brand-medium"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Quick online process—get registered in 8–10 business days</li>
+                            <li class="flex items-center text-brand-medium"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Legal recognition by the MCA</li>
+                            <li class="flex items-center text-brand-medium"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Boost credibility and fundraising opportunities</li>
+                            <li class="flex items-center text-brand-medium"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Seamless registration support at affordable pricing</li>
+                            <li class="flex items-center text-brand-medium"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>COI, MOA, AOA, DIN, PAN TAN, DSC</li>
+                            <li class="flex items-center text-brand-medium"><svg class="h-6 w-6 text-green-500 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>Most trusted choice for startups and SMEs</li>
+                        </ul>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <div class="bg-white rounded-xl shadow-2xl p-6 border border-gray-100">
+                            <h3 class="text-xl font-bold text-center text-brand-dark">Enter your details to receive a full quote and consultation</h3>
+                            <form class="mt-6 space-y-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700">Full Name*</label>
+                                    <input type="text" id="name" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number*</label>
+                                    <input type="tel" id="phone" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Enter Your Email*</label>
+                                    <input type="email" id="email" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-brand-primary focus:border-brand-primary">
+                                </div>
+                                <button type="submit" class="w-full bg-brand-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">Claim Your Free Consultation</button>
+                                <p class="text-xs text-center text-gray-500 mt-4">By clicking, you consent to receiving updates about our services as outlined in our Privacy Statement.</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN CONTENT SECTION -->
+        <section class="py-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+                    <aside class="lg:col-span-1 lg:sticky top-28 self-start">
+                        <div class="bg-slate-100 rounded-lg p-4">
+                            <h3 class="font-bold text-lg text-brand-dark mb-4">Index</h3>
+                            <nav id="page-nav">
+                                <ul class="space-y-1">
+                                    <li><a href="#what-is-pvt" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">What is a Private Limited Company?</a></li>
+                                    <li><a href="#key-features" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Key Features</a></li>
+                                    <li><a href="#objectives" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Key Objectives</a></li>
+                                    <li><a href="#laws-and-authorities" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Laws & Authorities</a></li>
+                                    <li><a href="#types-of-pvt" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Types of Pvt. Ltd. Companies</a></li>
+                                    <li><a href="#eligibility" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Eligibility Criteria</a></li>
+                                    <li><a href="#documents-required" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Documents Required</a></li>
+                                    <li><a href="#how-to-register" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">How to Register</a></li>
+                                    <li><a href="#fees-and-penalties" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Fees & Penalties</a></li>
+                                    <li><a href="#advantages-disadvantages" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Advantages & Disadvantages</a></li>
+                                    <li><a href="#post-compliance" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Post-Registration Compliance</a></li>
+                                    <li><a href="#certificate-and-status" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">Certificate & Status Check</a></li>
+                                    <li><a href="#faq" class="block text-slate-600 hover:text-brand-primary rounded-md p-2 transition-colors duration-200 text-sm">FAQs</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </aside>
+                    
+                    <div class="lg:col-span-3 space-y-8 prose prose-lg max-w-none">
+                        <section id="what-is-pvt">
+                            <h3>What is a Private Limited Company?</h3>
+                            <p>A Private Limited Company (Pvt. Ltd. Company) is a separate legal entity, privately owned by a minimum of two and a maximum of 200 shareholders. It's the go-to business structure in India, especially for startups and growing enterprises seeking robust legal protection and credibility.</p>
+                            <p><b>Key Advantage:</b> Unlike OPC, sole proprietorships, or partnerships, a Pvt. Ltd. company offers limited liability, meaning shareholders' personal assets are safeguarded from business debts and losses. Your financial risk is limited strictly to the value of your shares, providing peace of mind as you build your venture.</p>
+                        </section>
+
+                        <section id="key-features">
+                            <h3>Key Features of a Private Limited Company</h3>
+                            <p>This versatile structure offers entrepreneurs a blend of professional credibility and operational flexibility. Here’s why it’s a preferred choice:</p>
+                             <ul>
+                                <li><strong>Flexible Ownership:</strong> Requires a minimum of 2 and a maximum of 200 members (shareholders), offering scalability.</li>
+                                <li><strong>Distinct Legal Identity:</strong> Operates as a separate legal entity under the Companies Act, 2013, capable of owning assets, entering into contracts, and engaging in legal actions independently.</li>
+                                <li><strong>Unparalleled Limited Liability:</strong> Protects shareholders' personal assets; their financial risk is strictly limited to their shareholding value.</li>
+                                <li><strong>Perpetual Succession:</strong> Ensures the business continues uninterrupted, regardless of changes in shareholders or directors, fostering long-term stability.</li>
+                                <li><strong>Enhanced Credibility:</strong> Highly favored by investors, banks, and venture capitalists, making it easier to secure funding and build market trust.</li>
+                                <li><strong>Professional Structure:</strong> Provides the framework for robust governance and professionalism, ideal for ambitious growth.</li>
+                            </ul>
+                            <h3>Understanding Private Limited Company Registration</h3>
+                            <p>Private Limited Company Registration is the formal process of legally establishing your business under the Companies Act, 2013. This crucial step not only grants your enterprise a recognized corporate identity but also:</p>
+                            <ul>
+                                <li>Separates Personal & Business Assets: Providing a vital shield against business liabilities.</li>
+                                <li>Boosts Investor Appeal: Position your company for easier access to funding and capital.</li>
+                            </ul>
+                            <p>It's the ideal business structure for startups, rapidly growing businesses, and for any entrepreneur with aspirations to raise capital or scale operations. To initiate the process, a Private Limited Company must have a minimum of two directors and two shareholders.</p>
+                        </section>
+                        
+                        <section id="objectives">
+                             <h3>Key Objectives of Registering a Private Limited Company</h3>
+                             <p>Beyond mere compliance, registering your Private Limited Company unlocks strategic advantages vital for long-term success:</p>
+                             <ul>
+                                <li><strong>Establish Legal Personality:</strong> Secure a recognized business identity to build credibility with clients and lenders.</li>
+                                <li><strong>Protect Personal Assets:</strong> Shield founders’ wealth from company debts and liabilities.</li>
+                                <li><strong>Access Funding:</strong> Facilitate investment by issuing equity shares to angel investors, VCs, or strategic partners.</li>
+                                <li><strong>Ensure Continuity:</strong> Maintain uninterrupted operations, even if shareholders or directors change.</li>
+                                <li><strong>Qualify for Government Benefits:</strong> Get tax incentives, grants, and schemes available to registered companies.</li>
+                             </ul>
+                        </section>
+
+                        <section id="laws-and-authorities">
+                           <h3>Key Regulatory Authorities for Private Limited Companies</h3>
+                           <p>Your journey to establish and operate a Private Limited Company involves interaction with several critical government bodies governed by a comprehensive set of laws:</p>
+                           <ul>
+                               <li><strong>Registrar of Companies (ROC):</strong> Under the Ministry of Corporate Affairs, the ROC processes your SPICe+ application and issues the Certificate of Incorporation as per the Companies Act, 2013 which governs all aspects of company formation, operation, dissolution, and corporate governance standards.</li>
+                               <li><strong>Income Tax Department:</strong> Manages corporate tax rates, deductions, filings and direct tax aspects under Income Tax Act, 1961.</li>
+                               <li><strong>Reserve Bank of India (RBI) (if you have foreign investment):</strong> It regulates Foreign Direct Investment (FDI) approvals, external commercial borrowings, and repatriation of dividends under Foreign Exchange Management Act (FEMA).</li>
+                               <li><strong>Goods and Services Tax (GST):</strong> It regulates the GST registration required for companies crossing specified turnover thresholds.</li>
+                           </ul>
+                        </section>
+                        
+                        <section id="types-of-pvt">
+                            <h3>Types of Private Limited Companies</h3>
+                            <p>While the primary focus for most entrepreneurs is a Company Limited by Shares, it's important to understand the broader categories. The key difference among these types lies in the extent of members' liability in case of company losses or dissolution:</p>
+                            <h4>1. Company Limited by Shares</h4>
+                            <p>In this widely adopted structure and the one accepted by the Ministry of Corporate Affairs (MCA), the liability of each shareholder is strictly limited to the unpaid amount on their shares. Once shares are fully paid, there is no further personal liability.</p>
+                            <h4>2. Company Limited by Guarantee</h4>
+                            <p>Members agree to pay a predetermined amount only if the company is wound up. This guarantee sum is explicitly stated in the Memorandum of Association (MOA) and is typically favored by non-profit organizations or professional associations.</p>
+                            <h4>3. Unlimited Company</h4>
+                            <p>Members have no limit on their liability. If the company cannot pay its debts, members may have to use their funds. Still, the company has its own legal identity, so members are not sued directly.</p>
+                            <p><em>Example: Some family-owned businesses choose this structure for more control and privacy.</em></p>
+                        </section>
+
+                        <section id="eligibility">
+                            <h3>Eligibility Criteria for Private Limited Company Registration</h3>
+                            <p>To successfully register a Private Limited Company in India, specific statutory requirements must be fulfilled. Here’s a breakdown of the key eligibility criteria:</p>
+                            <ul>
+                                <li><strong>Minimum Directors:</strong> A minimum of two directors is mandatory for company registration.</li>
+                                <li><strong>Resident Director Requirement:</strong> At least one director must be an Indian Resident and a citizen, having stayed in India for a minimum of 182 days in the preceding financial year.</li>
+                                <li><strong>Maximum Directors:</strong> A Private Limited Company can appoint up to 15 directors by default. However, this number can be increased beyond 15 by passing a special resolution with shareholder approval.</li>
+                                <li><strong>Shareholders:</strong> A minimum of two shareholders are required for incorporation. Importantly, the same individuals can hold both director and shareholder positions.</li>
+                                <li><strong>Shareholder Limit:</strong> The total number of shareholders is limited to 200, excluding current and former employee-shareholders under ESOPs or similar plans.</li>
+                                <li><strong>Registered Office:</strong> The company must have a registered office in India. This address will be used for all official government communications and requires valid address proof, along with a No Objection Certificate (NOC) from the property owner irrespective of the premises being rented/leased/owned.</li>
+                                <li><strong>No Minimum Paid-up Capital:</strong> There is no mandatory minimum paid-up capital required, yet it has to be kept based on the number of shareholders. However, the company must declare its authorized share capital, for which a government fee is applicable during registration.</li>
+                                <li><strong>Director Identification Number (DIN):</strong> Every director must obtain a unique Director Identification Number (DIN), issued by the Ministry of Corporate Affairs (MCA).</li>
+                                <li><strong>Digital Signature Certificate (DSC):</strong> All proposed directors are required to obtain a Class 3 Digital Signature Certificate (DSC). It is used for digitally signing the incorporation documents during the registration process.</li>
+                            </ul>
+                        </section>
+
+                        <section id="documents-required">
+                           <h3>Documents Required for Private Limited Company Registration</h3>
+                           <p>Gathering the correct documentation is a critical step. Formsy simplifies this process, but here's a detailed checklist of what you'll need:</p>
+                           <h4>For Directors and Shareholders (Indian Nationals)</h4>
+                           <ul>
+                               <li>PAN Card (Mandatory)</li>
+                               <li>Aadhar Card/Driving License/Ration Card/Passport</li>
+                               <li>Recent passport-sized photograph</li>
+                               <li>Address Proof (any one): Latest Residential Utility bill (electricity, gas, telecom; not older than 2 months), or Bank statement (not older than 2 months).</li>
+                               <li>Email ID & Mobile Number (linked with Aadhar preferred)</li>
+                               <li>Specimen signature</li>
+                           </ul>
+                           <h4>For Foreign Directors/Shareholders (Additional Documents)</h4>
+                           <ul>
+                               <li>Passport; mandatory (with visa details, if applicable)</li>
+                               <li>Address Proof from Home Country (e.g., utility bill, bank statement; not older than 2 months)</li>
+                               <li>All foreign documents must be Notarized and Apostilled/Consularized as per international legal requirements.</li>
+                           </ul>
+                           <h4>For the Registered Office Address</h4>
+                           <ul>
+                               <li>Proof of Address: Latest Utility Bill (electricity, gas, telecom, not older than 2 months) or Property Tax Receipt.</li>
+                               <li>No Objection Certificate (NOC): From the property owner whose name is mentioned on the document.</li>
+                               <li>Rent/Lease Agreement Copy: (if applicable)</li>
+                           </ul>
+                           <h4>Company-Related Documents & Information</h4>
+                           <ul>
+                               <li>Proposed Company Name Options</li>
+                               <li>Detailed Description of Business Activities and Objectives</li>
+                               <li>Details of Authorized and Paid-up Capital</li>
+                               <li>Shareholding Pattern (who holds how many shares)</li>
+                               <li>Draft of Memorandum of Association (MOA)</li>
+                               <li>Draft of Articles of Association (AOA)</li>
+                               <li>Resolution Appointing First Directors</li>
+                           </ul>
+                        </section>
+                        
+                        <section id="how-to-register">
+                           <h3>How to Register a Private Limited Company in India?</h3>
+                           <p>To register a Private Limited Company in India, you need to follow a structured legal procedure outlined in these steps:</p>
+                           <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2138&auto=format&fit=crop" alt="Team collaborating on a business plan" class="w-full rounded-lg shadow-md my-8">
+                           <ol>
+                               <li><strong>Get Digital Signature Certificates (DSC):</strong> Each proposed director and subscriber to the Memorandum of Association (MOA) must obtain a Class 3 DSC. This is used to sign documents for a paperless registration process digitally. Validity: 2 years. Cost: Rs. 1,500 – Rs. 2,500 (varies by certifying authority). Recommended Providers: eMudhra, NIC, or other recognized agencies.</li>
+                               <li><strong>Apply for Director Identification Number (DIN):</strong> Every director must have a unique DIN (this does not imply that a person will have multiple DIN if he is a director in multiple companies). For new companies, DINs are issued as part of the SPICe+ incorporation form, so a separate application is not needed. DIN is valid for life and remains the same even if the director changes companies. A KYC has to be done every financial year to keep the DIN active. Foreign nationals can also apply using a passport and proof of overseas address.</li>
+                               <li><strong>Reserve Your Unique Company Name:</strong> Use the RUN (Reserve Unique Name) service on the MCA portal to request your preferred company name. You can submit up to 2 name options in an application that costs Rs. 1,000. Naming Guidelines: The name must be unique and not identical to existing companies. Should follow MCA naming rules and not include restricted words. Approval Time is usually 3–4 working days. Approved names are reserved for 20 days. If rejected, you can reapply immediately with alternate name options. Our Advantage: We conduct a thorough company name availability search to maximize your approval chances and suggest robust alternatives if needed.</li>
+                               <li><strong>Prepare & Draft Essential Documents:</strong> This crucial step involves drafting and finalizing key legal documents. Our team of CAs. CSs & Lawyers ensures accurate legal drafting of: Memorandum of Association (MOA) defining the company's main objectives. Articles of Association (AOA) setting rules for internal management. Director Declaration of Consent. Registered Office Proofs: Rent agreement, utility bill, and NOC from the property owner. All documents must be formatted as per MCA rules and digitally signed by the concerned parties.</li>
+                               <li><strong>File the Incorporation Form (SPICe+):</strong> We prepare and submit the comprehensive SPICe+ form online on your behalf, along with all required documents. Pay the applicable government fees, based on your company's authorized capital. This single form covers: Company registration, MOA & AOA, PAN & TAN allotment, EPFO & ESIC registration. Ensure all files are in PDF format, and cross-check director details to avoid rejection.</li>
+                               <li><strong>Receive Your Official Certificate of Incorporation (COI):</strong> Upon successful verification by the Registrar of Companies (ROC), you will be issued the Certificate of Incorporation (COI). This pivotal document legally confirms your company's formation and includes: Your unique Corporate Identity Number (CIN), Your company’s PAN (Permanent Account Number), Your company's TAN (Tax Deduction and Collection Account Number). At Formsy, we aim to complete the process within 8–10 working days for standard applications, provided all documents are accurate and government authorities respond promptly. Once your COI is received, your business is legally ready to commence operations and open its corporate bank account!</li>
+                           </ol>
+                        </section>
+                        
+                        <section id="fees-and-penalties">
+                           <h3>Fees and Penalties of Private Limited Company Registration</h3>
+                           <p>Understanding the costs involved and the repercussions of non-compliance is essential for every entrepreneur. Formsy believes in complete transparency regarding all fees and potential penalties.</p>
+                           <h4>Registration Costs</h4>
+                           <p>The overall cost for Private Limited Company registration comprises government fees, professional service charges, and some minor post-registration expenses. We provide a clear estimate upfront. Registration costs for PVTs vary based on the authorized capital & the state and professional services required for accurate submission.</p>
+                           <ul>
+                                <li>Name Reservation Fee: Rs. 1,000 for filing the name reservation form.</li>
+                                <li>Digital Signature Certificate: Rs. 2,000 - Rs. 3,000 per director, depending on validation level and provider.</li>
+                                <li>DIN/DPIN Application: Rs. 500 per director.</li>
+                                <li>Stamp Duty for OPC Registration: Varies by state and the authorized capital during the registration, typically ranging from 0.1% to 1% of the capital contribution.</li>
+                           </ul>
+                           <p><em>Note: The fees mentioned above don’t cover the charges an PVT registration consultant might take for their services.</em></p>
+                           <h4>Penalties for Non-Compliance</h4>
+                           <p>Failing to adhere to the statutory requirements of the Companies Act, 2013, can lead to substantial financial penalties and legal repercussions. Proactive compliance is key to avoiding these.</p>
+                        </section>
+                        
+                        <section id="advantages-disadvantages">
+                            <h3>Comprehensive Benefits of Private Limited Company Registration</h3>
+                            <p>Choosing a Private Limited Company structure provides a robust foundation for growth, significantly boosting your business's credibility, legal protection, and access to capital. Here’s a detailed look at the advantages:</p>
+                            <h4>1. Robust Legal Recognition & Protection</h4>
+                            <ul>
+                                <li><strong>Separate Legal Identity:</strong> The company is recognized as a separate legal entity. It can own property, enter into contracts, and initiate or face legal action in its name.</li>
+                                <li><strong>Limited Liability:</strong> Shareholders are protected from personal liability. Their risk is limited to the amount invested in shares.</li>
+                            </ul>
+                             <h4>2. Enhanced Transparency & Credibility</h4>
+                            <ul>
+                                <li><strong>Builds Trust:</strong> Being a registered company improves your credibility with clients, suppliers, and financial institutions.</li>
+                                <li><strong>Investor Confidence:</strong> Proper compliance and structured governance help attract serious investors.</li>
+                            </ul>
+                            <h4>3. Financial Advantages</h4>
+                            <ul>
+                                <li><strong>Easier Access to Loans:</strong> Banks and NBFCs prefer to offer loans to registered companies over unregistered entities.</li>
+                                <li><strong>Equity Investment Ready:</strong> You can raise funds by offering shares to angel investors, venture capital firms, or strategic partners.</li>
+                            </ul>
+                            <h4>4. Operational Advantages</h4>
+                            <ul>
+                                <li><strong>Easy Transfer of Ownership:</strong> Shares can be transferred smoothly, making changes in ownership or investment simple under company law.</li>
+                                <li><strong>Asset Transactions in Company Name:</strong> The company can own, buy, or sell assets directly. Transactions are backed by board resolutions, simplifying operations compared to sole ownership.</li>
+                            </ul>
+                            <h4>5. Growth Opportunities</h4>
+                            <ul>
+                                <li><strong>Eligible for Government Schemes:</strong> Registered companies can benefit from schemes under Startup India, MSME incentives, and various industry-specific policies.</li>
+                                <li><strong>Strategic Partnerships Made Easier:</strong> Being a formal entity makes it easier to enter joint ventures, mergers, or partnerships.</li>
+                            </ul>
+                            <h4>6. Perpetual Succession</h4>
+                            <ul>
+                                <li><strong>Continues Beyond Owners:</strong> The company exists independently of the founders or shareholders.</li>
+                                <li><strong>Supports Long-Term Vision:</strong> Helps create a legacy by carrying forward the founder’s goals and values, even after their exit.</li>
+                            </ul>
+                            <h3>Disadvantages of Private Limited Company Registration</h3>
+                            <p>While the benefits are strong, there are also some challenges to consider:</p>
+                            <h4>1. More Compliance Requirements</h4>
+                            <p>Regular filings, statutory records, board meetings, and audit procedures must be followed as per the Companies Act.</p>
+                            <h4>2. Higher Operational Costs</h4>
+                            <p>The cost of registration, legal services, compliance, and maintaining books is higher than for unregistered structures.</p>
+                            <h4>3. Limited Financial Privacy</h4>
+                            <p>Details such as financial statements, directors’ names, and other information are publicly available on the MCA and other government portals.</p>
+                            <h4>4. Restrictions on Share Transfer</h4>
+                            <p>The company’s Articles of Association may restrict share transfers, which can complicate investor exits or new investments.</p>
+                            <h4>5. Complex Closure Process</h4>
+                            <p>Winding up a private limited company involves multiple legal steps and can be time-consuming.</p>
+                            <h4>6. Slower Decision-Making</h4>
+                            <p>Decisions must go through formal procedures like board meetings and resolutions, which may reduce operational flexibility.</p>
+                            <p><strong>Tip:</strong> Working with a legal or financial advisor helps manage compliance easily and ensures you meet all legal obligations without delays.</p>
+                        </section>
+
+                        <section id="post-compliance">
+                            <h3>Post Compliance Requirements for a Private Limited Company</h3>
+                            <p>After completing private limited company registration, businesses must maintain annual compliance with various statutory requirements.</p>
+                        </section>
+
+                        <section id="certificate-and-status">
+                            <h3>Private Limited Company Registration Certificate</h3>
+                            <img src="https://i.postimg.cc/1X9Xy4vG/COI-sample.png" alt="Sample Certificate of Incorporation" class="w-full max-w-lg mx-auto rounded-lg shadow-md my-8 border">
+                            <p>After your Private Limited Company is successfully registered with the Ministry of Corporate Affairs (MCA), you’ll receive a Certificate of Incorporation, also known as the COI. This official document confirms that your company has been legally formed under the Companies Act, 2013. The COI includes your company’s legal name, Corporate Identification Number (CIN), date of incorporation, and registered office details. It’s a crucial document that proves your company’s legal existence. You’ll need the COI for several business activities, such as:</p>
+                            <ul>
+                                <li>Opening a business bank account</li>
+                                <li>Registering for GST</li>
+                                <li>Entering into legal contracts</li>
+                                <li>Applying for licenses and permits</li>
+                                <li>Seeking funding or attracting investors</li>
+                            </ul>
+                            <p>Having a valid COI builds trust with customers, government authorities, and potential partners.</p>
+                            
+                            <h4>How to Get a Registration Number for a Private Limited Company?</h4>
+                            <p>After your company is registered with the Ministry of Corporate Affairs (MCA), you will receive a Certificate of Incorporation. This certificate includes your Corporate Identification Number (CIN), which serves as the official registration number of your private limited company.</p>
+                            <p>Steps to Get a Private Limited Company Registration Number:</p>
+                            <ol>
+                                <li><strong>Get DSC and DIN</strong> – Apply for a Digital Signature Certificate and Director Identification Number for all proposed directors.</li>
+                                <li><strong>Choose and submit a Company Name</strong> – Submit your name choice to MCA through the SPICe+ or RUN form for approval.</li>
+                                <li><strong>Fill and submit the SPICe+ Form</strong> – Provide company details like business address, directors, and capital, etc.</li>
+                                <li><strong>MCA Reviews Your Application</strong> – The government verifies the documents and details.</li>
+                                <li><strong>Receive Your Certificate of Incorporation</strong> – Once approved, MCA issues the certificate along with your CIN.</li>
+                            </ol>
+                            <p>Your CIN is used in all legal, tax, and compliance matters. It is also needed for opening a company bank account, filing GST, or submitting annual returns.</p>
+                            
+                            <h4>How to Download the Private Limited Company Registration Certificate?</h4>
+                            <p>If you need a digital copy of your company’s Certificate of Incorporation, here’s how to get it:</p>
+                            <ol>
+                                <li><strong>Visit the MCA Portal:</strong> Go to www.mca.gov.in.</li>
+                                <li><strong>Log in to your account:</strong> Use your registered username and password (Business/Registered User account).</li>
+                                <li><strong>Go to the ‘MCA Services’ section:</strong> Click on “Get Certified Copies” or “View Public Documents.”</li>
+                                <li><strong>Search for your company:</strong> Enter your company’s CIN or full name to locate it.</li>
+                                <li><strong>Pay the applicable fee (if any):</strong> Some documents may have a nominal fee for download.</li>
+                                <li><strong>Download the COI:</strong> Once the document is ready, download the Certificate of Incorporation in PDF format.</li>
+                                <li><strong>Keep it safe:</strong> Save the file and print a copy for your company records.</li>
+                            </ol>
+                            <p>This certificate is often requested during audits, legal filings, or when applying for official approvals, so it’s important to have it readily accessible.</p>
+
+                            <h4>How to Check Private Limited Company Registration Status?</h4>
+                            <p>To check whether your Private Limited Company is registered in India, follow these simple steps:</p>
+                            <ol>
+                                <li><strong>Visit the MCA website:</strong> Go to www.mca.gov.in.</li>
+                                <li><strong>Access the Company Master Data:</strong> Click on “MCA Services” in the main menu, then select “View Company/LLP Master Data.”</li>
+                                <li><strong>Enter company details:</strong> Type in your company’s name or Corporate Identification Number (CIN).</li>
+                                <li><strong>Complete the CAPTCHA and submit:</strong> Enter the verification code and click “Submit.”</li>
+                                <li><strong>Check the status:</strong> You’ll see key information such as the company’s registration number, date of incorporation, current status (active, inactive, etc.), and registered address.</li>
+                            </ol>
+                            <p>If you run into any issues or need help, you can contact the MCA helpdesk or visit the local Registrar of Companies (ROC) office.</p>
+                        </section>
+
+                        <div class="bg-blue-50 rounded-lg p-6 flex flex-col sm:flex-row justify-between items-center my-8 gap-4 text-center sm:text-left">
+                            <div>
+                                <h4 class="font-bold text-xl text-brand-dark">Ready to Start Your Company?</h4>
+                                <p class="text-brand-medium mt-1">Let our experts handle the registration process for you. Get started today!</p>
+                            </div>
+                            <a href="contact.html" class="not-prose bg-brand-primary font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap"><span class="text-white">Consult Now</span></a>
+                        </div>
+                        
+                        <section id="faq">
+                            <h3>Frequently Asked Questions</h3>
+                            <div class="mt-6 space-y-4">
+                                <details class="faq-item bg-slate-50 border border-slate-200 rounded-lg p-4 cursor-pointer transition-all duration-300">
+                                    <summary class="font-semibold text-lg flex justify-between items-center">What is the difference between a Director and a Shareholder?<svg class="h-6 w-6 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary>
+                                    <p class="mt-4 text-brand-medium">A Director is responsible for managing the day-to-day affairs of the company, while a Shareholder is an owner of the company who has invested capital. In a private limited company, a person can be both a director and a shareholder.</p>
+                                </details>
+                                <details class="faq-item bg-slate-50 border border-slate-200 rounded-lg p-4 cursor-pointer transition-all duration-300">
+                                    <summary class="font-semibold text-lg flex justify-between items-center">Can a foreign national be a director in an Indian Private Limited Company?<svg class="h-6 w-6 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary>
+                                    <p class="mt-4 text-brand-medium">Yes, a foreign national can be a director. However, it is mandatory to have at least one director who is a resident of India.</p>
+                                </details>
+                                <details class="faq-item bg-slate-50 border border-slate-200 rounded-lg p-4 cursor-pointer transition-all duration-300">
+                                    <summary class="font-semibold text-lg flex justify-between items-center">Is it mandatory to have a physical office?<svg class="h-6 w-6 transform transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></summary>
+                                    <p class="mt-4 text-brand-medium">You must have a registered office address in India. This address can be a commercial space or even a residential address, provided you have the necessary NOC from the owner. You can also opt for a virtual office address.</p>
+                                </details>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 border-t border-slate-700">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-white">Formsy</h3>
+                    <p class="mt-4">123 Business Lane, Suite 100<br/>Startup City, ST 12345</p>
+                    <p class="mt-2">contact@formsy.com</p>
+                    <div class="flex space-x-4 mt-6">
+                       <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Facebook"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"></path></svg></a>
+                       <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Twitter"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.67.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.22-1.95-.55v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.5 20.33 8.79c0-.19 0-.38-.01-.57.84-.6 1.56-1.36 2.14-2.22z"></path></svg></a>
+                       <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.44-2.14 2.94v5.68h-3.56V9h3.42v1.56h.05c.47-.89 1.62-1.84 3.37-1.84 3.61 0 4.27 2.38 4.27 5.47v6.26zM5.34 7.44c-1.14 0-2.06-.92-2.06-2.06s.92-2.06 2.06-2.06 2.06.92 2.06 2.06-.92 2.06-2.06 2.06zM3.56 9h3.56v11.45H3.56V9z"></path></svg></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg text-white">Services</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="hover:text-white">Trademark Registration</a></li>
+                        <li><a href="#" class="hover:text-white">Company Incorporation</a></li>
+                        <li><a href="#" class="hover:text-white">GST Filing</a></li>
+                        <li><a href="#" class="hover:text-white">Compliance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg text-white">Company</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="/about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="/contact.html" class="hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white">Careers</a></li>
+                        <li><a href="#" class="hover:text-white">Blogs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg text-white">Legal</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+                        <li><a href="#" class="hover:text-white">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-slate-700 pt-8 text-center text-slate-500">
+                <p>&copy; 2024 Formsy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('#page-nav a');
+            const sections = Array.from(document.querySelectorAll('main section[id], main div[id]')).filter(el => el.id);
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    const id = entry.target.getAttribute('id');
+                    const navLink = document.querySelector(`#page-nav a[href="#${id}"]`);
+                    if (!navLink) return;
+
+                    if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                         navLinks.forEach(link => {
+                            link.classList.remove('bg-blue-100', 'text-brand-primary', 'font-semibold');
+                            link.classList.add('text-slate-600');
+                         });
+                         navLink.classList.add('bg-blue-100', 'text-brand-primary', 'font-semibold');
+                         navLink.classList.remove('text-slate-600');
+                    }
+                });
+            }, { rootMargin: '-40% 0px -60% 0px', threshold: 0.3 });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Formsy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-primary': '#3B82F6',   // blue-500
+            'brand-secondary': '#2DD4BF', // teal-400
+            'brand-dark': '#1F2937',     // gray-800
+            'brand-darker': '#0F172A',   // slate-900
+            'brand-medium': '#6B7280',   // gray-500
+            'brand-light': '#F9FAFB',    // gray-50
+            'brand-white': '#FFFFFF',
+            'brand-accent': '#F97316',   // orange-500
+            'brand-whatsapp': '#25D366',
+            'brand-section-bg': '#e0f3f0', // A light teal
+            'brand-wave': '#f5d4c3' // salmon/peach for wave
+          },
+          fontFamily: {
+            sans: ['Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+    </script>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #e0f3f0;
+      }
+    </style>
+</head>
+<body class="font-sans">
+
+    <header id="main-header" class="absolute top-0 left-0 right-0 z-50 p-4">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="header-inner" class="flex items-center justify-between h-16 rounded-full border border-white/10 px-6 bg-black/50 backdrop-blur-lg shadow-xl">
+                <div class="flex-shrink-0">
+                     <a href="/index.html" class="flex items-center space-x-2 text-2xl font-bold text-white">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7">
+                            <rect x="3" y="3" width="18" height="18" rx="4" fill="white"></rect>
+                            <path d="M8 12.5L11 15.5L16.5 9" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        <span>Formsy</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex md:space-x-8">
+                    <a href="/about.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">About us</a>
+                    <div class="relative group" id="services-menu-container">
+                        <a href="/services.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium flex items-center">
+                            Services
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div class="absolute top-full -left-40 w-[1000px] bg-slate-900 shadow-lg rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto border border-slate-700 transform translate-y-4 group-hover:translate-y-0 z-50">
+                            <div class="p-8">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-6">
+                                    <!-- Column 1: Startup & Taxation -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">1. Startup</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="private.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Private Limited Company Registration</a></li>
+                                            <li><a href="LLP.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">LLP Registration</a></li>
+                                            <li><a href="OPC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">OPC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">NGO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Indian Subsidiary Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Foreign Subsidiary Registration in India</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Registration</a></li>
+                                            <li><a href="Sole.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Sole Proprietorship Registration</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">4. Taxation</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Income Tax Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">80-IAC Tax Exemption for Startups</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Tax Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">GST Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">GST Return Filing</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Cancel GST Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Additional Place of Business in GST</a></li>
+                                        </ul>
+                                    </div>
+                        
+                                    <!-- Column 2: Registrations & IPR -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">2. Registrations</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Startup India Registration</a></li>
+                                            <li><a href="IEC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Import Export Code Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">MSME Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Shop & Establishment Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">BIS Certification</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Darpan Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">12A and 80G Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">RCMC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">PTEC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ICEGATE Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">EPR Registration</a></li>
+                                            <li><a href="DSC.html" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Digital Signature Certificate</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">5. IPR</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trademark Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Copyright Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trademark Opposition</a></li>
+                                        </ul>
+                                    </div>
+                        
+                                    <!-- Column 3: Compliances & Licenses -->
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-white mb-4 border-b border-slate-700 pb-2">3. Compliances</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Virtual Office</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">EPFO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ESIC Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">LLP Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Partnership Firm Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Company Compliance</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change Private Limited Company Name</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change in Object Clause</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Change in Designated Partner</a></li>
+                                        </ul>
+                                        <h3 class="text-lg font-semibold text-white mt-6 mb-4 border-b border-slate-700 pb-2">6. Licenses</h3>
+                                        <ul class="space-y-2">
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">FSSAI Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">ISO Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Trade License</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Gumasta License</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">RERA Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">Hallmark Registration</a></li>
+                                            <li><a href="#" class="text-orange-400 hover:text-orange-300 transition-colors text-sm font-medium">APEDA Registration</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                         <a href="#" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium flex items-center">
+                            Resources
+                            <svg class="ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <div class="absolute top-full left-0 mt-4 w-48 bg-slate-900 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto border border-slate-700">
+                            <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800">Tools & Calculators</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800">Regulatory</a>
+                            
+                        </div>
+                    </div>
+                    <a href="#" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Blogs & Guides</a>
+                    <a href="partner.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Partner with us</a>
+                    <a href="contact.html" class="text-white font-semibold py-2">Contact us</a>
+                </nav>
+                <div class="hidden md:flex items-center space-x-4">
+                     <a href="#" class="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                        <span>Talk to Experts</span>
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button aria-label="Open menu">
+                        <svg class="h-6 w-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="relative overflow-hidden" style="background-color: #080F21;">
+            <section class="container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 md:pb-0">
+                <div class="grid md:grid-cols-2 gap-8 items-end">
+                    <div class="text-white z-10 text-center md:text-left pb-12">
+                        <h1 class="text-4xl lg:text-5xl font-extrabold tracking-tight">Got Questions? <br> Get Your Queries Answered Instantly</h1>
+                        <p class="mt-4 text-lg text-slate-300 max-w-lg mx-auto md:mx-0">We’re here to help you start, structure, and scale your business.</p>
+                        <p class="mt-4 text-lg text-slate-300 max-w-lg mx-auto md:mx-0">Get in touch - The perfect solution is just a Call Away! Ring Now!</p>
+                        <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                            <a href="#" class="inline-flex items-center justify-center gap-3 px-6 py-3 font-semibold text-white bg-brand-whatsapp rounded-lg shadow-lg hover:bg-green-600 transition-colors duration-300 transform hover:scale-105">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 4.315 1.731 6.086l.001.004l-1.03 3.75z"/></svg>
+                                <span>Chat on WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                     <div class="relative h-[26rem] md:h-[30rem] lg:h-[34rem] flex justify-center md:justify-end rounded-lg transform md:translate-y-16">
+                        <div class="absolute top-1/2 -left-4 h-12 w-12 bg-green-500/80 rounded-full flex items-center justify-center shadow-lg animate-pulse z-20" style="animation-delay: 0.2s;">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                             <path d="M21.99 4c0-1.1-.89-2-1.99-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"/>
+                           </svg>
+                       </div>
+                       <div class="absolute top-2/3 right-1/4 h-10 w-10 bg-blue-500/80 rounded-full flex items-center justify-center shadow-lg animate-pulse z-20" style="animation-delay: 0.7s;">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                       </div>
+                        <img id="hero-image" src="https://ik.imagekit.io/3o5ofvzg8/554126565_1561139418203593_7695863043271806738_n-removebg-preview.png?updatedAt=1760154167109" alt="Customer service professional with a headset" class="h-full w-auto object-contain z-10 rounded-lg">
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="bg-brand-section-bg py-16">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-brand-darker mb-12">Contact Us</h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <!-- Sales Team -->
+                        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 text-center">
+                            <div class="mx-auto mb-4 h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                                <svg class="h-8 w-8 text-brand-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.75M9 12h6.75m-6.75 5.25h6.75M5.25 6h.008v.008H5.25V6Zm.75 5.25h.008v.008H6v-.008Zm-.75 5.25h.008v.008H5.25v-.008ZM18.75 9h.008v.008h-.008V9Zm-.75 5.25h.008v.008h-.008v-.008Zm.75-10.5h.008v.008H18V6Z" /></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-dark">Sales Team</h3>
+                            <a href="tel:+918595430015" class="mt-3 inline-flex items-center gap-2 font-semibold text-brand-whatsapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
+                                +91 8595430015
+                            </a>
+                        </div>
+                        <!-- Registrations Desk -->
+                        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 text-center">
+                           <div class="mx-auto mb-4 h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                                <svg class="h-8 w-8 text-brand-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18" /></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-dark">Incorporations & Registrations</h3>
+                            <a href="tel:+918595430015" class="mt-3 inline-flex items-center gap-2 font-semibold text-brand-whatsapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
+                                +91 8595430015
+                            </a>
+                        </div>
+                        <!-- Trademark & IP Support -->
+                        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 text-center">
+                            <div class="mx-auto mb-4 h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                               <svg class="h-8 w-8 text-brand-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-dark">Support team</h3>
+                            <a href="tel:+918595430015" class="mt-3 inline-flex items-center gap-2 font-semibold text-brand-whatsapp">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654z"/></svg>
+                                +91 8595430015
+                            </a>
+                        </div>
+                        <!-- Tax & Audit Solutions -->
+                        <div class="bg-white p-4 rounded-lg shadow-md border border-gray-200 text-center">
+                            <div class="mx-auto mb-4 h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
+                                <svg class="h-8 w-8 text-brand-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008Zm0 3h.008v.008H8.25v-.008Zm0 3h.008v.008H8.25v-.008Zm3-6h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm3-6h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm3-9h.008v.008h-.008V9Zm-12 0h.008v.008H8.25V9Zm3.75 0h.008v.008h-.008V9Zm-3.75 9h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15A2.25 2.25 0 0 0 2.25 6.75v10.5A2.25 2.25 0 0 0 4.5 19.5Z" /></svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-brand-dark">Tax & Audit Solutions</h3>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <!-- Get Instant Quote Form -->
+                        <div class="bg-brand-darker text-white p-6 rounded-lg shadow-lg relative">
+                             <button type="button" class="absolute top-2 right-2 text-gray-400 hover:text-white" aria-label="Close">
+                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                            </button>
+                            <h3 class="text-xl font-bold">Get Your Instant Quote & Expert Consultation</h3>
+                            <form class="mt-4 space-y-4">
+                                <input type="text" placeholder="Full Name" class="w-full bg-gray-700 text-white placeholder-gray-400 px-4 py-2 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-primary">
+                                <input type="text" placeholder="Mobile Number" class="w-full bg-gray-700 text-white placeholder-gray-400 px-4 py-2 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-primary">
+                                <input type="email" placeholder="Email Address" class="w-full bg-gray-700 text-white placeholder-gray-400 px-4 py-2 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-primary">
+                                <textarea placeholder="Message and Queries" class="w-full bg-gray-700 text-white placeholder-gray-400 px-4 py-2 rounded-md border border-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-primary" rows="4"></textarea>
+                                <button type="submit" class="w-full bg-brand-accent text-white font-bold py-3 px-4 rounded-md hover:bg-orange-600 transition-colors">Get a Free Expert Consultation</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section class="py-16 sm:py-24" style="background-color: #fdf5ec;">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold tracking-tight text-brand-darker sm:text-4xl">
+                        Unlock Seamless Solutions for Incorporation, Compliance, and Taxation with Our Expert Services!
+                    </h2>
+                </div>
+                <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Card 1 -->
+                    <a href="/services.html" class="group relative block rounded-lg overflow-hidden shadow-lg transform transition-transform hover:-translate-y-2">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=870&auto=format&fit=crop" alt="Business professionals in a meeting, representing company registration" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/50 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-xl font-bold text-white leading-tight">Private Limited Company Registration</h3>
+                        </div>
+                    </a>
+                    <!-- Card 2 -->
+                    <a href="/services.html" class="group relative block rounded-lg overflow-hidden shadow-lg transform transition-transform hover:-translate-y-2">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=987&auto=format&fit=crop" alt="Fresh produce representing FSSAI certification" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/50 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-xl font-bold text-white leading-tight">FSSAI Certificate Registration</h3>
+                        </div>
+                    </a>
+                    <!-- Card 3 -->
+                    <a href="/services.html" class="group relative block rounded-lg overflow-hidden shadow-lg transform transition-transform hover:-translate-y-2">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=870&auto=format&fit=crop" alt="People shaking hands over a table, signifying an LLP Registration" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/50 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-xl font-bold text-white leading-tight">LLP Registration</h3>
+                        </div>
+                    </a>
+                    <!-- Card 4 -->
+                    <a href="/services.html" class="group relative block rounded-lg overflow-hidden shadow-lg transform transition-transform hover:-translate-y-2">
+                        <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?q=80&w=876&auto=format&fit=crop" alt="An open book, representing legal documents and Trademark Registration" class="w-full h-96 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/50 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-xl font-bold text-white leading-tight">Trademark Registration</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="mt-12 text-center">
+                    <a href="/services.html" class="inline-block bg-gradient-to-r from-orange-500 to-amber-500 text-white px-10 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Get Started Today
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 border-t border-slate-700">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-white">Formsy</h3>
+                        <p class="mt-4">123 Business Lane, Suite 100<br/>Startup City, ST 12345</p>
+                        <p class="mt-2">contact@formsy.com</p>
+                        <div class="flex space-x-4 mt-6">
+                           <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Facebook"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"></path></svg></a>
+                           <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Twitter"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.67.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.22-1.95-.55v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.5 20.33 8.79c0-.19 0-.38-.01-.57.84-.6 1.56-1.36 2.14-2.22z"></path></svg></a>
+                           <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.44-2.14 2.94v5.68h-3.56V9h3.42v1.56h.05c.47-.89 1.62-1.84 3.37-1.84 3.61 0 4.27 2.38 4.27 5.47v6.26zM5.34 7.44c-1.14 0-2.06-.92-2.06-2.06s.92-2.06 2.06-2.06 2.06.92 2.06 2.06-.92 2.06-2.06 2.06zM3.56 9h3.56v11.45H3.56V9z"></path></svg></a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-white">Services</h4>
+                        <ul class="mt-4 space-y-2">
+                            <li><a href="#" class="hover:text-white">Trademark Registration</a></li>
+                            <li><a href="#" class="hover:text-white">Company Incorporation</a></li>
+                            <li><a href="#" class="hover:text-white">GST Filing</a></li>
+                            <li><a href="#" class="hover:text-white">Compliance</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-white">Company</h4>
+                        <ul class="mt-4 space-y-2">
+                            <li><a href="/about.html" class="hover:text-white">About Us</a></li>
+                            <li><a href="/contact.html" class="hover:text-white">Contact Us</a></li>
+                            <li><a href="#" class="hover:text-white">Careers</a></li>
+                            <li><a href="#" class="hover:text-white">Blogs</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-white">Legal</h4>
+                        <ul class="mt-4 space-y-2">
+                            <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-white">Terms & Conditions</a></li>
+                            <li><a href="#" class="hover:text-white">Sitemap</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-12 border-t border-slate-700 pt-8 text-center text-slate-500">
+                    <p>&copy; 2024 Formsy. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    
+    <a href="#" class="fixed bottom-6 right-6 bg-brand-whatsapp h-16 w-16 rounded-full flex items-center justify-center text-white shadow-lg transform hover:scale-110 transition-transform z-50">
+        <div class="text-center text-xs leading-tight">
+            Call Us<br>Now
+        </div>
+    </a>
+</body>
+</html>
