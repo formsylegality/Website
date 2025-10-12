@@ -114,6 +114,30 @@
         background-position: bottom -2rem right -2rem;
         background-size: 60% auto;
       }
+
+      /* Uniform card and tab styling */
+.tab-content {
+  margin-top: 2rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.tab-content > div {
+  background-color: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tab-content > div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
     </style>
 <script type="importmap">
 {
@@ -145,7 +169,7 @@
                     </a>
                 </div>
                 <nav class="hidden md:flex md:space-x-8">
-                    <a href="about.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">About us</a>
+                    <a href="/about.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">About us</a>
                     <div class="relative group" id="services-menu-container">
                         <a href="/services.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium flex items-center">
                             Services
@@ -286,7 +310,7 @@
             </button>
         </div>
         <nav class="flex flex-col space-y-4 text-lg text-center">
-            <a href="about.html" class="text-slate-300 hover:text-white py-2">About us</a>
+            <a href="/about.html" class="text-slate-300 hover:text-white py-2">About us</a>
             <a href="/services.html" class="text-slate-300 hover:text-white py-2">Services</a>
             <a href="#" class="coming-soon-link text-slate-300 hover:text-white py-2">Resources</a>
             <a href="#" class="coming-soon-link text-slate-300 hover:text-white py-2">Blogs & Guides</a>
@@ -940,5 +964,38 @@
         // All javascript has been moved to index.tsx to support ES6 modules.
     </script>
 <script type="module" src="/index.tsx"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".service-tab");
+  const contents = document.querySelectorAll(".tab-content");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      const target = tab.getAttribute("data-tab");
+
+      // Reset tab styles
+      tabs.forEach(t => {
+        t.classList.remove("bg-blue-600", "text-white");
+        t.classList.add("bg-white", "text-gray-600");
+      });
+      tab.classList.add("bg-blue-600", "text-white");
+
+      // Hide all sections smoothly
+      contents.forEach(content => {
+        content.classList.add("hidden");
+        content.style.opacity = 0;
+        content.style.transition = "opacity 0.3s ease";
+      });
+
+      // Show the active one
+      const targetContent = document.getElementById(`tab-content-${target}`);
+      targetContent.classList.remove("hidden");
+      requestAnimationFrame(() => targetContent.style.opacity = 1);
+    });
+  });
+});
+</script>
+
 </body>
 </html>
