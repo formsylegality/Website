@@ -10,14 +10,14 @@
       theme: {
         extend: {
           colors: {
-            'brand-primary': '#3B82F6',    // blue-500
+            'brand-primary': '#3B82F6',     // blue-500
             'brand-secondary': '#2DD4BF', // teal-400
-            'brand-dark': '#1F2937',      // gray-800
-            'brand-darker': '#0F172A',    // slate-900
-            'brand-medium': '#6B7280',    // gray-500
-            'brand-light': '#F9FAFB',     // gray-50
+            'brand-dark': '#1F2937',       // gray-800
+            'brand-darker': '#0F172A',     // slate-900
+            'brand-medium': '#6B7280',     // gray-500
+            'brand-light': '#F9FAFB',       // gray-50
             'brand-white': '#FFFFFF',
-            'brand-accent': '#F97316',    // orange-500
+            'brand-accent': '#F97316',     // orange-500
             'brand-whatsapp': '#25D366',
             'brand-section-bg': '#e0f3f0', // A light teal
             'brand-wave': '#f5d4c3' // salmon/peach for wave
@@ -32,7 +32,7 @@
     <style>
       body {
         font-family: 'Arial', sans-serif;
-        /* Set background to light sky blue as requested (Tailwind 'sky-50') */
+        /* REVERTED: Set background back to light sky blue as requested */
         background-color: #f0f9ff; 
       }
       /* Simple smooth scrolling for anchor links */
@@ -47,9 +47,9 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div id="header-inner" class="flex items-center justify-between h-16 rounded-full border border-white/10 px-6 bg-black/50 backdrop-blur-lg shadow-xl">
                 <div class="flex-shrink-0">
-                        <a href="/index.html" class="flex items-center text-2xl font-bold text-white">
-                        <img class="h-24 w-auto object-contain" src="https://ik.imagekit.io/3o5ofvzg8/557657344_1495142828294166_4549417873496881086_n-removebg-preview.png" alt="Formsy Logo">
-                    </a>
+                    <a href="/index.html" class="flex items-center text-2xl font-bold text-white">
+                    <img class="h-24 w-auto object-contain" src="https://ik.imagekit.io/3o5ofvzg8/557657344_1495142828294166_4549417873496881086_n-removebg-preview.png" alt="Formsy Logo">
+                </a>
                 </div>
                 <nav class="hidden md:flex md:space-x-8">
                     <a href="/about.html" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">About us</a>
@@ -147,7 +147,7 @@
                         <div class="absolute top-full left-0 mt-4 w-48 bg-slate-900 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none group-hover:pointer-events-auto border border-slate-700">
                             <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800">Tools & Calculators</a>
                             <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-slate-800">Regulatory</a>
-                            
+                           
                         </div>
                     </div>
                     <a href="#" class="text-slate-300 hover:text-white transition-colors duration-200 py-2 font-medium">Blogs & Guides</a>
@@ -177,7 +177,7 @@
     </header>
 
     <main class="pt-24">
-        
+       
         <div class="bg-white border-b border-gray-200">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <h1 class="text-3xl lg:text-4xl font-extrabold text-brand-darker tracking-tight text-center">
@@ -191,90 +191,114 @@
 
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="flex flex-col lg:flex-row lg:gap-8">
-                
+               
                 <aside class="w-full lg:w-1/4 mb-8 lg:mb-0">
                     <nav class="sticky top-28 bg-white p-6 rounded-lg shadow-md">
-                        <h3 class="text-lg font-bold text-brand-darker mb-4 border-b pb-2">On this page</h3>
+                        <h3 class="text-lg font-bold text-brand-darker mb-4 border-b pb-2">Index</h3>
                         <ul class="space-y-2">
                             <li><a href="#section-1" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">1. Acceptance of Terms</a></li>
-                            <li><a href="#section-2" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">2. Description of Services</a></li>
-                            <li><a href="#section-3" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">3. User Accounts</a></li>
-                            <li><a href="#section-4" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">4. Use of Website</a></li>
-                            <li><a href="#section-5" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">5. Fees and Payments</a></li>
+                            <li><a href="#section-2" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">2. Responsible Use & Conduct</a></li>
+                            <li><a href="#section-3" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">3. Description of Services</a></li>
+                            <li><a href="#section-4" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">4. User Accounts</a></li>
+                            <li><a href="#section-5" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">5. Fees, Payments & Refunds</a></li>
                             <li><a href="#section-6" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">6. Intellectual Property</a></li>
                             <li><a href="#section-7" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">7. Limitation of Liability</a></li>
-                            <li><a href="#section-8" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">8. Governing Law</a></li>
-                            <li><a href="#section-9" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">9. Contact Information</a></li>
+                            <li><a href="#section-8" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">8. Indemnification</a></li>
+                            <li><a href="#section-9" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">9. Termination of Use</a></li>
+                            <li><a href="#section-10" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">10. Governing Law</a></li>
+                            <li><a href="#section-11" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">11. Guarantee</a></li>
+                            <li><a href="#section-12" class="block py-1 font-medium text-brand-medium hover:text-brand-primary transition-colors">12. Contact Information</a></li>
                         </ul>
                     </nav>
                 </aside>
 
                 <article class="w-full lg:w-3/4 bg-white p-6 sm:p-8 rounded-lg shadow-md">
-                    
+                   
                     <p class="text-lg font-bold text-brand-medium mb-6">
                         Entity Name: Formsy Legality LLP
                     </p>
                     <p class="text-lg text-brand-medium mb-6">
-                        These Terms and Conditions of Use ("Terms") govern your access to and use of the Formsy website, platform, and services (collectively, the "Services"). Please read these Terms carefully.
+                        These Terms and Conditions of Use ("Terms") govern your access to and use of the Formsy website (formsy.in), platform, and services (collectively, the "Services"). Please read these Terms carefully.
                     </p>
-                    
+                   
                     <section id="section-1" class="mb-6 pt-4">
                         <h2 class="text-2xl font-bold text-brand-darker mt-4 mb-4 pb-2 border-b">
-                            1. Acceptance of Terms
+                            1. Acceptance of Terms (User Agreement)
                         </h2>
                         <p class="text-base text-gray-700 mb-4 leading-relaxed">
-                            By accessing or using our Services, you agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms, you may not access or use the Services. We may modify these Terms at any time, and such modifications will be effective immediately upon posting. Your continued use of the Services signifies your acceptance of the updated Terms.
+                            By visiting our website and accessing the information, resources, services, products, and tools we provide (collectively "Resources"), you understand and agree to accept and adhere to the following terms and conditions as stated in this policy.
+                        </p>
+                        <p class="text-base text-gray-700 mb-4 leading-relaxed">
+                            We reserve the right to change this User Agreement from time to time without notice. You acknowledge and agree that it is your responsibility to review this User Agreement periodically to familiarize yourself with any modifications. Your continued use of this site after such modifications will constitute acknowledgment and agreement of the modified terms and conditions.
                         </p>
                     </section>
-                    
+                   
                     <section id="section-2" class="mb-6 pt-4">
                         <h2 class="text-2xl font-bold text-brand-darker mt-4 mb-4 pb-2 border-b">
-                            2. Description of Services
+                            2. Responsible Use and Conduct
                         </h2>
                         <p class="text-base text-gray-700 mb-4 leading-relaxed">
-                            Formsy provides an online platform for business incorporation, legal compliance, taxation filings, intellectual property registration, and other related services ("Services"). These services are provided based on the information and documentation you submit. Formsy is not a law firm or an accounting firm and does not provide legal or financial advice. Our services are not a substitute for the advice of a lawyer or chartered accountant.
+                            By visiting our website and accessing our Resources, you agree to use these Resources only for the purposes intended as permitted by (a) the terms of this User Agreement, and (b) applicable laws, regulations, and generally accepted online practices or guidelines.
                         </p>
+                        <p class="text-base text-gray-700 mb-4 leading-relaxed">
+                            Wherein, you understand that:
+                        </p>
+                        <ul class="list-disc list-outside text-gray-700 mb-4 pl-6 space-y-2 leading-relaxed">
+                            <li>Accessing (or attempting to access) any of our Resources by any means other than through the means we provide is strictly prohibited. You specifically agree not to access (or attempt to access) any of our Resources through any automated, unethical, or unconventional means.</li>
+                            <li>Engaging in any activity that disrupts or interferes with our Resources, including the servers and/or networks to which our Resources are located or connected, is strictly prohibited.</li>
+                            <li>Attempting to copy, duplicate, reproduce, sell, trade, or resell our Resources is strictly prohibited.</li>
+                            <li>You are solely responsible for any consequences, losses, or damages that we may directly or indirectly incur or suffer due to any unauthorized activities conducted by you, as explained above, and may incur criminal or civil liability.</li>
+                        </ul>
                     </section>
 
                     <section id="section-3" class="mb-6 pt-4">
                         <h2 class="text-2xl font-bold text-brand-darker mt-4 mb-4 pb-2 border-b">
-                            3. User Accounts
+                            3. Description of Services
                         </h2>
                         <p class="text-base text-gray-700 mb-4 leading-relaxed">
-                            To access certain features of the Services, you may be required to create an account. You are responsible for maintaining the confidentiality of your account information, including your password, and for all activities that occur under your account. You agree to notify us immediately of any unauthorized use of your account or any other breach of security.
+                            Formsy provides an online platform for business incorporation, legal compliance, taxation filings, intellectual property registration, and other related services ("Services"). These services are provided based on the information and documentation you submit.
+                        </p>
+                        <p class="text-base text-gray-700 mb-4 leading-relaxed">
+                            Formsy Legality LLP is not a law firm or an accounting firm and does not provide legal or financial advice. Our services are not a substitute for the advice of a lawyer, chartered accountant, or other qualified professional. We act as a technology platform and facilitator based on your direction.
                         </p>
                     </section>
 
                     <section id="section-4" class="mb-6 pt-4">
                         <h2 class="text-2xl font-bold text-brand-darker mt-4 mb-4 pb-2 border-b">
-                            4. Use of Website
+                            4. User Accounts
                         </h2>
                         <p class="text-base text-gray-700 mb-4 leading-relaxed">
-                            You agree to use the Services only for lawful purposes and in accordance with these Terms. You agree not to use the Services:
+                            To access certain Resources, you may be required to provide certain information about yourself (such as identification, email, phone number, contact details, etc.) as part of the registration process. You agree that any information you provide will always be accurate, correct, and up to date.
                         </p>
-                        <ul class="list-disc list-outside text-gray-700 mb-4 pl-6 space-y-2 leading-relaxed">
-                            <li>In any way that violates any applicable national or international law or regulation.</li>
-                            <li>To engage in any conduct that restricts or inhibits anyone's use or enjoyment of the Services, or which, as determined by us, may harm Formsy or users of the Services.</li>
-                            <li>To impersonate or attempt to impersonate Formsy, a Formsy employee, another user, or any other person or entity.</li>
-                            <li>To upload or transmit any material that is defamatory, obscene, indecent, abusive, offensive, harassing, violent, hateful, inflammatory, or otherwise objectionable.</li>
-                        </ul>
+                        <p class="text-base text-gray-700 mb-4 leading-relaxed">
+                            You are responsible for maintaining the confidentiality of any login information associated with any account you use to access our Resources. Accordingly, you are responsible for all activities that occur under your account.
+                        </p>
                     </section>
 
                     <section id="section-5" class="mb-6 pt-4">
                         <h2 class="text-2xl font-bold text-brand-darker mt-4 mb-4 pb-2 border-b">
-                            5. Fees and Payments
+                            5. Fees, Payments, and Refunds
                         </h2>
                         <p class="text-base text-gray-700 mb-4 leading-relaxed">
-                            Certain Services are subject to payment. You agree to pay all applicable fees, including government fees and our service fees, as described on the website in connection with such Services. All fees are non-refundable, except as required by law or as explicitly stated in our Refund Policy. All prices are exclusive of applicable taxes (like GST) unless stated otherwise.
+                            You agree to pay all applicable fees for the Services, including government fees and our service fees, as described on the website.
                         </p>
+                        <ul class="list-disc list-outside text-gray-700 mb-4 pl-6 space-y-2 leading-relaxed">
+                            <li>All fees are exclusive of applicable taxes (like Goods and Services Tax - GST) unless stated otherwise.</li>
+                            <li>Cancellation of an order is not possible once payment has been made, except for the conditions stated in the refund policy.</li>
+                            <li>No refunds will be given except in the event of cancellation or non-performance of service by Formsy Legality LLP. Please refer to our detailed <a href="refund-policy.html" class="text-brand-primary hover:underline">Refund Policy</a> for more information.</li>
+                            <li>Any additional government fees or out-of-pocket expenses incurred during the provision of services will be notified and charged to you.</li>
+                        </ul>
                     </section>
-                    
+                   
                     <section id="section-6" class="mb-6 pt-4">
                         <h2 class="text-2xl font-bold text-brand-darker mt-4 mb-4 pb-2 border-b">
                             6. Intellectual Property
                         </h2>
                         <p class="text-base text-gray-700 mb-4 leading-relaxed">
-                            The Services and their entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof) are owned by Formsy, its licensors, or other providers of such material and are protected by copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
+                            The Services and their entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof) are owned by Formsy Legality LLP, its licensors, or other providers of such material and are protected by copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
+                        </p>
+                        <p class="text-base text-gray-700 mb-4 leading-relaxed">
+                            Any inappropriate use, including but not limited to the reproduction, distribution, display, or transmission of any content on this site is strictly prohibited, unless specifically authorized by Formsy Legality LLP.
                         </p>
                     </section>
 
@@ -283,31 +307,58 @@
                             7. Limitation of Liability
                         </h2>
                         <p class="text-base text-gray-700 mb-4 leading-relaxed">
-                            In no event will Formsy, its affiliates, or their licensors, service providers, employees, agents, officers, or directors be liable for damages of any kind, under any legal theory, arising out of or in connection with your use, or inability to use, the Services, any websites linked to it, any content on the Services, or such other websites, including any direct, indirect, special, incidental, consequential, or punitive damages.
+                            In no event will Formsy, its affiliates, or their licensors, service providers, employees, agents, officers, or directors be liable for damages of any kind, under any legal theory, arising out of or in connection with your use, or inability to use, the Services, any websites linked to it, any content on the Services, or such other websites, including any direct, indirect, special, incidental, consequential, or punitive damages. Your use of the Resources is at your sole risk.
                         </p>
                     </section>
 
                     <section id="section-8" class="mb-6 pt-4">
                         <h2 class="text-2xl font-bold text-brand-darker mt-4 mb-4 pb-2 border-b">
-                            8. Governing Law
+                            8. Indemnification
                         </h2>
                         <p class="text-base text-gray-700 mb-4 leading-relaxed">
-                            All matters relating to the Services and these Terms, and any dispute or claim arising therefrom or related thereto (in each case, including non-contractual disputes or claims), shall be governed by and construed in accordance with the laws of India. Any legal suit, action, or proceeding arising out of, or related to, these Terms or the Services shall be instituted exclusively in the courts of Noida, Uttar Pradesh, India.
+                            You agree to indemnify and hold harmless Formsy Legality LLP and its affiliates, and their directors, officers, managers, employees, agents, and licensors, from and against all losses, expenses, damages, and costs, including reasonable attorneys' fees, resulting from any violation of this User Agreement or the failure to fulfill any obligations relating to your account incurred by you or any other person using your account.
                         </p>
                     </section>
 
                     <section id="section-9" class="mb-6 pt-4">
                         <h2 class="text-2xl font-bold text-brand-darker mt-4 mb-4 pb-2 border-b">
-                            9. Contact Information
+                            9. Termination of Use
                         </h2>
                         <p class="text-base text-gray-700 mb-4 leading-relaxed">
-                            If you have any questions about these Terms, please contact us at:
+                            You agree that we may, at our sole discretion, suspend or terminate your access to all or part of our website and Resources with or without notice and for any reason, including, without limitation, breach of this User Agreement. Any suspected illegal, fraudulent, or abusive activity may be grounds for terminating your relationship and may be referred to appropriate law enforcement authorities.
+                        </img src="https://i.imgur.com/8158Nch.png" alt="Formsy Logo">
+                    </section>
+
+                    <section id="section-10" class="mb-6 pt-4">
+                        <h2 class="text-2xl font-bold text-brand-darker mt-4 mb-4 pb-2 border-b">
+                            10. Governing Law
+                        </h2>
+                        <p class="text-base text-gray-700 mb-4 leading-relaxed">
+                            All matters relating to the Services and these Terms, and any dispute or claim arising therefrom or related thereto, shall be governed by and construed in accordance with the laws of India. Any legal suit, action, or proceeding arising out of, or related to, these Terms or the Services shall be instituted exclusively in the courts of Noida, Uttar Pradesh, India.
+                        </p>
+                    </section>
+
+                    <section id="section-11" class="mb-6 pt-4">
+                        <h2 class="text-2xl font-bold text-brand-darker mt-4 mb-4 pb-2 border-b">
+                            11. Guarantee
+                        </h2>
+                        <p class="text-base text-gray-700 mb-4 leading-relaxed">
+                            Unless otherwise expressed, Formsy Legality LLP expressly disclaims all warranties and conditions of any kind, whether express or implied, including, but not limited to the limited to the implied waaranties and conditions of merchantability, fitness for a particular purpose, and non-infringement.
+                        </p>
+                    </section>
+
+                    <section id="section-12" class="mb-6 pt-4">
+                        <h2 class="text-2xl font-bold text-brand-darker mt-4 mb-4 pb-2 border-b">
+                            12. Contact Information
+                        </h2>
+                        <p class="text-base text-gray-700 mb-4 leading-relaxed">
+                            If you have any questions or comments about these Terms, please contact us at:
                         </p>
                         <p class="text-base text-gray-700 leading-relaxed">
                             <strong>Formsy Legality LLP</strong><br>
-                            Noida, Uttar Pradesh, 201318<br>
+                            Ghaziabad, Uttar Pradesh, 201318<br>
                             Email: info@formsy.in<br>
-                            Phone No.: +91 8595430015
+                            Phone No.: +91 85954 30015
                         </p>
                     </section>
 
@@ -318,54 +369,54 @@
     </main>
 
     <footer class="bg-slate-800 text-slate-400 border-t border-slate-700">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <div>
-                        <h3 class="text-2xl font-bold text-white">Formsy</h3>
-                        <p class="mt-4">Formsy Legality LLP, Noida, Uttar Pradesh, 201318</p>
-                        <p class="mt-5">Send an email</p>
-                        <p class="mt-1">info@formsy.in</p>
-                        <p class="mt-5">Working Hours</p>
-                        <p class="mt-1">Monday to Friday: 9:30am - 6:30pm</p>
-                        <div class="flex space-x-4 mt-6">
-                           <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Facebook"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"></path></svg></a>
-                           <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Twitter"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.67.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.22-1.95-.55v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.5 20.33 8.79c0-.19 0-.38-.01-.57.84-.6 1.56-1.36 2.14-2.22z"></path></svg></a>
-                           <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.44-2.14 2.94v5.68h-3.56V9h3.42v1.56h.05c.47-.89 1.62-1.84 3.37-1.84 3.61 0 4.27 2.38 4.27 5.47v6.26zM5.34 7.44c-1.14 0-2.06-.92-2.06-2.06s.92-2.06 2.06-2.06 2.06.92 2.06 2.06-.92 2.06-2.06 2.06zM3.56 9h3.56v11.45H3.56V9z"></path></svg></a>
-                        </div>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-lg text-white">Services</h4>
-                        <ul class="mt-4 space-y-2">
-                            <li><a href="Services/private.html" class="hover:text-white">Private Limited Company Registration</a></li>
-                            <li><a href="Services" class="hover:text-white">GST Registration</a></li>
-                            <li><a href="#" class="hover:text-white">GST Filing</a></li>
-                            <li><a href="#" class="hover:text-white">Compliance</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-lg text-white">Company</h4>
-                        <ul class="mt-4 space-y-2">
-                            <li><a href="/about.html" class="hover:text-white">About Us</a></li>
-                            <li><a href="/contact.html" class="hover:text-white">Contact Us</a></li>
-                            <li><a href="#" class="hover:text-white">Careers</a></li>
-                            <li><a href="#" class="hover:text-white">Blogs</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold text-lg text-white">Legal</h4>
-                        <ul class="mt-4 space-y-2">
-                            <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
-                            <li><a href="terms.html" class="hover:text-white">Terms & Conditions</a></li>
-                            <li><a href="refund.html" class="hover:text-white">Refund Policy</a></li>
-                            <li><a href="#" class="hover:text-white">Sitemap</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="mt-12 border-t border-slate-700 pt-8 text-center text-slate-500">
-                    <p>&copy; 2025 Formsy. All rights reserved.</p>
-                </div>
-            </div>
+          <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                  <div>
+                      <h3 class="text-2xl font-bold text-white">Formsy</h3>
+                      <p class="mt-4">Formsy Legality LLP, Noida, Uttar Pradesh, 201318</p>
+                      <p class="mt-5">Send an email</p>
+                      <p class="mt-1">info@formsy.in</p>
+                      <p class="mt-5">Working Hours</p>
+                      <p class="mt-1">Monday to Friday: 9:30am - 6:30pm</p>
+                      <div class="flex space-x-4 mt-6">
+                         <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Facebook"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"></path></svg></a>
+                         <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="Twitter"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.67.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.22-1.95-.55v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.5 20.33 8.79c0-.19 0-.38-.01-.57.84-.6 1.56-1.36 2.14-2.22z"></path></svg></a>
+                         <a href="#" class="text-slate-400 hover:text-white transition-colors" aria-label="LinkedIn"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.44-2.14 2.94v5.68h-3.56V9h3.42v1.56h.05c.47-.89 1.62-1.84 3.37-1.84 3.61 0 4.27 2.38 4.27 5.47v6.26zM5.34 7.44c-1.14 0-2.06-.92-2.06-2.06s.92-2.06 2.06-2.06 2.06.92 2.06 2.06-.92 2.06-2.06 2.06zM3.56 9h3.56v11.45H3.56V9z"></path></svg></a>
+                      </div>
+                  </div>
+                  <div>
+                      <h4 class="font-semibold text-lg text-white">Services</h4>
+                      <ul class="mt-4 space-y-2">
+                          <li><a href="Services/private.html" class="hover:text-white">Private Limited Company Registration</a></li>
+                          <li><a href="Services" class="hover:text-white">GST Registration</a></li>
+                          <li><a href="#" class="hover:text-white">GST Filing</a></li>
+                          <li><a href="#" class="hover:text-white">Compliance</a></li>
+                      </ul>
+                  </div>
+                  <div>
+                      <h4 class="font-semibold text-lg text-white">Company</h4>
+                      <ul class="mt-4 space-y-2">
+                          <li><a href="/about.html" class="hover:text-white">About Us</a></li>
+                          <li><a href="/contact.html" class="hover:text-white">Contact Us</a></li>
+                          <li><a href="#" class="hover:text-white">Careers</a></li>
+                          <li><a href="#" class="hover:text-white">Blogs</a></li>
+                      </ul>
+                  </div>
+                  <div>
+                      <h4 class="font-semibold text-lg text-white">Legal</h4>
+                      <ul class="mt-4 space-y-2">
+                          <li><a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a></li>
+                          <li><a href="terms-and-conditions.html" class="hover:text-white">Terms & Conditions</a></li>
+                          <li><a href="refund-policy.html" class="hover:text-white">Refund Policy</a></li>
+                          <li><a href="#" class="hover:text-white">Sitemap</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="mt-12 border-t border-slate-700 pt-8 text-center text-slate-500">
+                  <p>&copy; 2025 Formsy. All rights reserved.</p>
+              </div>
+          </div>
         </footer>
-    
+   
     </body>
 </html>
